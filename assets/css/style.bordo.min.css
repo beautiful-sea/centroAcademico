@@ -17121,6 +17121,19 @@ body.lb-disable-scrolling {
     height: 50px;
     transition: all ease .3s;
 }
+.ms-lead-navbar-white {
+    position: fixed!important;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #FFF!important;
+    box-shadow: none;
+    color: #fff;
+    height: 50px;
+    transition: all ease .3s;
+}
 
 .ms-lead-navbar .navbar-brand {
     font-weight: 300;
