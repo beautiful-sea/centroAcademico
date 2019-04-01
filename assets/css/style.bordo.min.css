@@ -739,11 +739,11 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle {
-    background-color: rgba(3, 169, 244, .5);
+    background-color: rgba(120, 30, 32, .5);
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:after {
-    background-color: #03a9f4;
+    background-color: #781E20;
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
@@ -831,11 +831,11 @@ fieldset[disabled] .form-group.is-focused .radio label, fieldset[disabled] .form
 }
 
 .radio input[type=radio]:checked~.check, label.radio-inline input[type=radio]:checked~.check {
-    background-color: #03a9f4;
+    background-color: #781e20;
 }
 
 .radio input[type=radio]:checked~.circle, label.radio-inline input[type=radio]:checked~.circle {
-    border-color: #03a9f4;
+    border-color: #781e20;
 }
 
 .radio input[type=radio]:checked~.check, label.radio-inline input[type=radio]:checked~.check {
@@ -9900,7 +9900,7 @@ label.color-white {
 }
 
 .nav.nav-tabs.indicator-primary .ms-tabs-indicator {
-    background-color: #03a9f4;
+    background-color: #781e20;
 }
 
 .nav.nav-tabs.indicator-info .ms-tabs-indicator {
@@ -13343,6 +13343,10 @@ a.img-thumbnail:hover, a.img-thumbnail:focus {
     position: relative;
 }
 
+.ms-hero-bg-bordo {
+    position: relative;
+}
+
 .ms-hero-bg-success:after {
     display: block;
     content: "";
@@ -13357,7 +13361,26 @@ a.img-thumbnail:hover, a.img-thumbnail:focus {
     z-index: 0;
 }
 
+.ms-hero-bg-bordo:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(120, 30, 32, .85);
+    z-index: 0;
+}
+
 .ms-hero-bg-success .container {
+    position: relative;
+    z-index: 1;
+}
+
+.ms-hero-bg-bordo .container {
     position: relative;
     z-index: 1;
 }
@@ -17141,6 +17164,7 @@ body.lb-disable-scrolling {
     height: 50px;
     transition: all ease .3s;
 }
+
 .ms-lead-navbar-white {
     position: fixed!important;
     z-index: 30;
