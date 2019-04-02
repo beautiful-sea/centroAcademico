@@ -3,10 +3,10 @@
  * ------------
  */
 .skin-bordo .main-header .navbar {
-  background-color: #030303;
+  background-color: #EEEEEE;
 }
 .skin-bordo .main-header .navbar .nav > li > a {
-  color: #EEEEEE;
+  color: #030303;
 }
 .skin-bordo .main-header .navbar .nav > li > a:hover,
 .skin-bordo .main-header .navbar .nav > li > a:active,
@@ -26,11 +26,11 @@
   background: rgba(0, 0, 0, 0.1);
 }
 .skin-bordo .main-header .navbar .sidebar-toggle {
-  color: #fff;
+  color: #030303;
 }
 .skin-bordo .main-header .navbar .sidebar-toggle:hover {
-  background-color: #EEEEEE;
-  color: #030303
+  background-color: #030303;
+  color: #EEEEEE
 }
 @media (max-width: 767px) {
   .skin-bordo .main-header .navbar .dropdown-menu li.divider {
@@ -44,13 +44,13 @@
   }
 }
 .skin-bordo .main-header .logo {
-  background-color: #EEEEEE;
-  color: #030303;
+  background-color: #030303;
+  color: #EEEEEE;
   border-bottom: 0 solid transparent;
 }
 .skin-bordo .main-header .logo:hover {
-  background-color: #030303;
-  color: #EEEEEE;
+  background-color: #EEEEEE;
+  color: #030303;
 }
 .skin-bordo .main-header li.user-header {
   background-color: #781E20;
@@ -61,7 +61,7 @@
 .skin-bordo .wrapper,
 .skin-bordo .main-sidebar,
 .skin-bordo .left-side {
-  background-color: #030303;
+  background-color: #802f2f;
 }
 .skin-bordo .user-panel > .info,
 .skin-bordo .user-panel > .info > a {
@@ -98,7 +98,7 @@
 }
 .skin-bordo .sidebar-menu .treeview-menu > li.active > a,
 .skin-bordo .sidebar-menu .treeview-menu > li > a:hover {
-  color: #030303;
+  color: #781e20;
 }
 .skin-bordo .sidebar-form {
   border-radius: 3px;
