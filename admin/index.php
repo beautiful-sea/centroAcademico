@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION['usuario'])){
+	header('Location: login.php');
+}else{
+	$usuario = $_SESSION['usuario'];
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -269,8 +281,8 @@
 					<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
-					<p>Lindomar Silva</p>
-					<a href="#"><i class="fa fa-power-off"></i> Sair</a>
+					<p><?php echo($usuario['nome']);  ?></p>
+					<a href="controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
 				</div>
 			</div>
 			<!-- sidebar menu: : style can be found in sidebar.less -->
