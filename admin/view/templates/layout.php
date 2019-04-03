@@ -255,7 +255,7 @@
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="/centroAcademico/admin/cadastrar.php"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+						<li><a href="view/usuarios/gerenciar.php"><i class="fa fa-circle-o"></i> Gerenciar</a></li>
 						<li><a href="index.html"><i class="fa fa-circle-o"></i> Editar</a></li>
 
 					</ul>
@@ -268,9 +268,7 @@
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="index.html"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
-						<li><a href="index.html"><i class="fa fa-circle-o"></i> Editar</a></li>
-
+						<li><a href="view/usuarios/gerenciar.php"><i class="fa fa-circle-o"></i> Gerenciar</a></li>
 					</ul>
 				</li>
 				
