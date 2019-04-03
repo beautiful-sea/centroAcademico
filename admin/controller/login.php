@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../model/Usuario.php");
+require_once("../auto_load.php");
 
 $email = $_POST['email'];
 $senha = md5($_POST['senha']);
