@@ -177,7 +177,7 @@ class Usuario{
 		try{
 
 			$termo = "%".$termo."%";
-			$sql = "SELECT * FROM usuarios where email LIKE :termo OR nome LIKE :termo  ";
+			$sql = "SELECT * FROM usuarios where (email LIKE :termo OR nome LIKE :termo) AND admin = 0 ORDER BY nome ";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 
