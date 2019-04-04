@@ -109,6 +109,43 @@ class Usuario{
 		}
 	}
 
+	public function editar($id){
+
+		try{
+			$sql = "UPDATE usuarios SET nome = :nome,email = :email WHERE id = :id";
+
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(':nome',$this->getNome());
+			$stmt->bindValue(':email',$this->getEmail());
+			$stmt->bindValue(':id',$id);
+
+			return $stmt->execute();
+		}catch(Exception $e){
+			print("Erro ao acessar Banco de Dados<br>");
+			print($e->getMessage());
+		}
+	}
+
+	public function deletar($id){
+
+		try{
+			$sql = "DELETE FROM usuarios WHERE id = :id";
+
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(':id',$id);
+
+			return $stmt->execute();
+
+		}catch(Exception $e){
+			print("Erro ao acessar Banco de Dados<br>");
+			print($e->getMessage());
+		}
+
+
+	}
+
 	public function checarEmail(){//Verifica se email ja está cadastrado
 
 		try{
@@ -129,6 +166,51 @@ class Usuario{
 			}else{
 				return true;
 			}
+		}catch(Exception $e){
+			print("Erro ao acessar Banco de Dados<br>");
+			print($e->getMessage());
+		}
+	}
+
+	public function buscarUsuario($termo){
+
+		try{
+
+			$termo = "%".$termo."%";
+			$sql = "SELECT * FROM usuarios where email LIKE :termo OR nome LIKE :termo  ";
+
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(":termo",$termo);
+
+			$stmt->execute();
+
+			$consulta = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			return $consulta;
+
+		}catch(Exception $e){
+			print("Erro ao acessar Banco de Dados<br>");
+			print($e->getMessage());
+		}
+
+	}
+
+	public function buscarPorID($id){
+		try{
+
+			$sql = "SELECT * FROM usuarios where id = :id";
+
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(":id",$id);
+
+			$stmt->execute();
+
+			$consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			return $consulta;
+
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());
