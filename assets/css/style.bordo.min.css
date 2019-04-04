@@ -218,6 +218,10 @@ body .container .well-royal, body .container .jumbotron-royal, body .container-f
     color: #3f51b5;
 }
 
+.btn:not(.btn-raised).btn-bordo, .input-group-btn .btn:not(.btn-raised).btn-bordo {
+    color: #781E20;
+}
+
 .btn:not(.btn-raised).btn-primary, .input-group-btn .btn:not(.btn-raised).btn-primary {
     color: #03a9f4;
 }
@@ -251,7 +255,10 @@ body .container .well-royal, body .container .jumbotron-royal, body .container-f
     background-color: #3f51b5;
     color: #fff;
 }
-
+.btn.btn-raised.btn-bordo, .btn.btn-fab.btn-bordo, .btn-group-raised .btn.btn-bordo, .input-group-btn .btn.btn-raised.btn-bordo, .input-group-btn .btn.btn-fab.btn-bordo, .btn-group-raised .input-group-btn .btn.btn-bordo {
+    background-color: #781E20;
+    color: rgba(255, 255, 255, .84);
+}
 .btn.btn-raised.btn-primary, .btn.btn-fab.btn-primary, .btn-group-raised .btn.btn-primary, .input-group-btn .btn.btn-raised.btn-primary, .input-group-btn .btn.btn-fab.btn-primary, .btn-group-raised .input-group-btn .btn.btn-primary {
     background-color: #781E20;
     color: rgba(255, 255, 255, .84);
@@ -296,6 +303,9 @@ body .container .well-royal, body .container .jumbotron-royal, body .container-f
 
 .btn.btn-raised:not(.btn-link):hover.btn-inverse, .btn.btn-raised:not(.btn-link):focus.btn-inverse, .btn.btn-raised:not(.btn-link).active.btn-inverse, .btn.btn-raised:not(.btn-link):active.btn-inverse, .btn-group-raised .btn:not(.btn-link):hover.btn-inverse, .btn-group-raised .btn:not(.btn-link):focus.btn-inverse, .btn-group-raised .btn:not(.btn-link).active.btn-inverse, .btn-group-raised .btn:not(.btn-link):active.btn-inverse, .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-inverse, .input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-inverse, .input-group-btn .btn.btn-raised:not(.btn-link).active.btn-inverse, .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-inverse, .btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-inverse, .btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-inverse, .btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-inverse, .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-inverse {
     background-color: #495bc0;
+}
+.btn.btn-raised:not(.btn-link):hover.btn-bordo, .btn.btn-raised:not(.btn-link):focus.btn-bordo, .btn.btn-raised:not(.btn-link).active.btn-bordo, .btn.btn-raised:not(.btn-link):active.btn-bordo, .btn-group-raised .btn:not(.btn-link):hover.btn-bordo, .btn-group-raised .btn:not(.btn-link):focus.btn-bordo, .btn-group-raised .btn:not(.btn-link).active.btn-bordo, .btn-group-raised .btn:not(.btn-link):active.btn-bordo, .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-bordo, .input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-bordo, .input-group-btn .btn.btn-raised:not(.btn-link).active.btn-bordo, .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-bordo, .btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-bordo, .btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-bordo, .btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-bordo, .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-bordo {
+    background-color: #781E20;
 }
 
 .btn.btn-raised:not(.btn-link):hover.btn-primary, .btn.btn-raised:not(.btn-link):focus.btn-primary, .btn.btn-raised:not(.btn-link).active.btn-primary, .btn.btn-raised:not(.btn-link):active.btn-primary, .btn-group-raised .btn:not(.btn-link):hover.btn-primary, .btn-group-raised .btn:not(.btn-link):focus.btn-primary, .btn-group-raised .btn:not(.btn-link).active.btn-primary, .btn-group-raised .btn:not(.btn-link):active.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link).active.btn-primary, .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-primary, .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-primary {
@@ -8595,9 +8605,17 @@ pre.line-numbers>code {
     border-bottom: solid 3px #00bcd4;
     border-radius: 3px;
 }
+.card.card-bordo {
+    border-bottom: solid 3px #781E20;
+    border-radius: 3px;
+}
 
 .card.card-info .card-header, .card.card-info .card-footer {
     background-color: #00bcd4;
+    color: #f5f5f5;
+}
+.card.card-bordo .card-header, .card.card-bordo .card-footer {
+    background-color: #781E20;
     color: #f5f5f5;
 }
 
@@ -8606,17 +8624,32 @@ pre.line-numbers>code {
     border-bottom: solid 3px #00bcd4;
     color: #fff;
 }
+.card.card-bordo-inverse {
+    background-color: #781E20;
+    border-bottom: solid 3px #781E20;
+    color: #fff;
+}
 
 .card.card-info-inverse a.link {
+    color: #fff;
+}
+.card.card-bordo-inverse a.link {
     color: #fff;
 }
 
 .card.card-info-inverse a.link:hover, .card.card-info-inverse a.link:focus {
     border-bottom: solid 1px #fff;
 }
+.card.card-bordo-inverse a.link:hover, .card.card-bordo-inverse a.link:focus {
+    border-bottom: solid 1px #fff;
+}
 
 .card.card-info-inverse .card-header, .card.card-info-inverse .card-footer {
     background-color: #009cb0;
+    color: #f5f5f5;
+}
+.card.card-bordo-inverse .card-header, .card.card-bordo-inverse .card-footer {
+    background-color: #781E20;
     color: #f5f5f5;
 }
 
@@ -9732,6 +9765,10 @@ label.color-white {
     border: 0;
 }
 
+.ms-collapse .card-bordo .card-header {
+    padding: 0;
+    background-color: #781E20;
+}
 .ms-collapse .card-info .card-header {
     padding: 0;
     background-color: #781E20;
@@ -9741,8 +9778,15 @@ label.color-white {
     display: block;
     color: #fff!important;
 }
+.ms-collapse .card-bordo .card-header .card-title a {
+    display: block;
+    color: #fff!important;
+}
 
 .ms-collapse .card-info .card-collapse .card-block, .ms-collapse .card-info .card-collapse .card-body {
+    border: 0;
+}
+.ms-collapse .card-bordo .card-collapse .card-block, .ms-collapse .card-bordo .card-collapse .card-body {
     border: 0;
 }
 
@@ -11337,6 +11381,10 @@ label.color-white {
 
 .thumbnail-card.thumbnail-card-info .caption {
     background-color: #00bcd4;
+    color: #fff;
+}
+.thumbnail-card.thumbnail-card-bordo .caption {
+    background-color: #781E20;
     color: #fff;
 }
 
@@ -14924,6 +14972,12 @@ body.lb-disable-scrolling {
     .timeline-center>[class*=col-] .left.card-info:before {
         background-color: #00bcd4;
     }
+    .timeline-center>[class*=col-] .left.card-bordo:after {
+        border-left-color: #781E20;
+    }
+    .timeline-center>[class*=col-] .left.card-bordo:before {
+        background-color: #781E20;
+    }
     .timeline-center>[class*=col-] .left.card-royal:after {
         border-left-color: #9c27b0;
     }
@@ -14971,6 +15025,12 @@ body.lb-disable-scrolling {
     }
     .timeline-center>[class*=col-] .left.card-info-inverse:before {
         background-color: #00bcd4;
+    }
+    .timeline-center>[class*=col-] .left.card-bordo-inverse:after {
+        border-left-color: #781E20;
+    }
+    .timeline-center>[class*=col-] .left.card-bordo-inverse:before {
+        background-color: #781E20;
     }
     .timeline-center>[class*=col-] .left.card-royal-inverse:after {
         border-left-color: #9c27b0;
@@ -15043,6 +15103,12 @@ body.lb-disable-scrolling {
     .timeline-center>[class*=col-] .right.card-info:before {
         background-color: #00bcd4;
     }
+    .timeline-center>[class*=col-] .right.card-bordo:after {
+        border-right-color: #781E20;
+    }
+    .timeline-center>[class*=col-] .right.card-bordo:before {
+        background-color: #781E20;
+    }
     .timeline-center>[class*=col-] .right.card-royal:after {
         border-right-color: #9c27b0;
     }
@@ -15090,6 +15156,12 @@ body.lb-disable-scrolling {
     }
     .timeline-center>[class*=col-] .right.card-info-inverse:before {
         background-color: #00bcd4;
+    }
+    .timeline-center>[class*=col-] .right.card-bordo-inverse:after {
+        border-right-color: #781E20;
+    }
+    .timeline-center>[class*=col-] .right.card-bordo-inverse:before {
+        background-color: #781E20;
     }
     .timeline-center>[class*=col-] .right.card-royal-inverse:after {
         border-right-color: #9c27b0;
