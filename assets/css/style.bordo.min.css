@@ -13091,6 +13091,13 @@ a.img-thumbnail:hover, a.img-thumbnail:focus {
     background-repeat: no-repeat;
 }
 
+.ms-hero-img-caeng {
+    background-image: url(../img/logos/caeng.jpg);
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
 .ms-hero-img-beach {
     background-image: url(../img/beach.jpg);
     background-size: cover;
@@ -15443,6 +15450,7 @@ body.lb-disable-scrolling {
     background-color: #fff;
     color: black!important;
 }
+
 .price-table.price-table-danger {
     border-bottom: solid 3px #f44336;
 }
