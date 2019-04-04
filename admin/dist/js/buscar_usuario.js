@@ -35,10 +35,9 @@ $(document).ready(function(){
 									<dt>Email:</dt><dd>'+valor.email+'</dd>');
 							}
 						})
-					
 					});
 
-					$(".btn-editar").on("click",function(){//Ao clicar no botão de detalhes
+					$(".btn-editar").on("click",function(){//Ao clicar no botão de edição do usuário
 						botao = this;
 						id = botao.getAttribute("data-editar");//Pegando id do usuario pelo atributo do botao
 
@@ -49,7 +48,16 @@ $(document).ready(function(){
 								$("#editar_id").val(valor.id);
 							}
 						})
-					
+					});
+
+					$(".btn-remover").on("click",function(){//Ao clicar no botão de remover usuário
+						botao = this;
+						id = botao.getAttribute("data-remover");//Pegando id do usuario pelo atributo do botao
+						$.each(data, function(chave,valor){
+							if(valor.id == id){
+								$("#remover_id").val(valor.id);
+							}
+						})
 					});
 				}
 			})			

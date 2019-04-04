@@ -127,6 +127,25 @@ class Usuario{
 		}
 	}
 
+	public function deletar($id){
+
+		try{
+			$sql = "DELETE FROM usuarios WHERE id = :id";
+
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(':id',$id);
+
+			return $stmt->execute();
+
+		}catch(Exception $e){
+			print("Erro ao acessar Banco de Dados<br>");
+			print($e->getMessage());
+		}
+
+
+	}
+
 	public function checarEmail(){//Verifica se email ja está cadastrado
 
 		try{
@@ -175,6 +194,27 @@ class Usuario{
 			print($e->getMessage());
 		}
 
+	}
+
+	public function buscarPorID($id){
+		try{
+
+			$sql = "SELECT * FROM usuarios where id = :id";
+
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(":id",$id);
+
+			$stmt->execute();
+
+			$consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			return $consulta;
+
+		}catch(Exception $e){
+			print("Erro ao acessar Banco de Dados<br>");
+			print($e->getMessage());
+		}
 	}
 }
 

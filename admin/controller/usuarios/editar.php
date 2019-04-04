@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('../../auto_load.php');
 
 

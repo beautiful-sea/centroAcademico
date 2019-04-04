@@ -12,27 +12,41 @@ if(!isset($_SESSION['usuario'])){
 
 	$mensagem = '';//Mensagem de retorno ao enviar formulario de cadastro
 	$alert = ''; //Define a cordo do alert gerado para mensagem
-	if(isset($_GET['r'])){//Verifica se existe alguma mensagem de 'r'egistro de usuario
-		switch ($_GET['r']) {
-			case 1:
-			$mensagem = "Cadastro Realizado com Sucesso.";
-			$alert = 'alert alert-success';
-			break;
-			case 2:
-			$mensagem = "As senhas devem ser iguais.";
-			$alert = 'alert alert-warning';
-			break;
-			case 3:
-			$mensagem = "Email já cadastrado.";
-			$alert = 'alert alert-danger';
-			break;
-		}
+	if(isset($_GET['r'])){//Verifica se existe alguma mensagem ao 'r'egistrar usuario
+	switch ($_GET['r']) {
+		case 1:
+		$mensagem = "Cadastro Realizado com Sucesso.";
+		$alert = 'alert alert-success';
+		break;
+		case 2:
+		$mensagem = "As senhas devem ser iguais.";
+		$alert = 'alert alert-warning';
+		break;
+		case 3:
+		$mensagem = "Email já cadastrado.";
+		$alert = 'alert alert-danger';
+		break;
 	}
-	if(isset($_GET['e'])){//Verifica se existe alguma mensagem de 'e'dição de usuario
+}
+	if(isset($_GET['e'])){//Verifica se existe alguma mensagem ao 'e'ditar usuario
 		switch ($_GET['e']) {
 			case 1:
 			$mensagem = "Dados Editados com sucesso.";
 			$alert = 'alert alert-success';
+			break;
+		}
+	}
+
+	if(isset($_GET['d'])){//Verifica se existe alguma mensagem ao 'd'eletar usuario
+		switch ($_GET['d']) {
+			case 1:
+			$mensagem = "Usuário removido com sucesso.";
+			$alert = 'alert alert-danger';
+			break;
+
+			case 2:
+			$mensagem = "Não é possivel deletar sua própria conta.";
+			$alert = 'alert alert-danger';
 			break;
 		}
 	}
@@ -151,20 +165,23 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 			<!-- /.modal -->
 			<!-- Modal Remover -->
 			<div class="modal fade" id="modal-remover">
-				<div class="modal-dialog">
+				<div class="modal-dialog modal-danger">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title">Default Modal</h4>
+								<h4 class="modal-title">Deletar Usuário</h4>
 							</div>
-							<div class="modal-body">
-								<p>One fine body&hellip;</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save changes</button>
-							</div>
+							<form action="../../controller/usuarios/deletar.php" method="POST">
+								<div class="modal-body">
+									<p><b style="font-size: 20px">Tem certeza que deseja remover o usuário do sistema?</b></p>
+									<input type="hidden" name="id" id="remover_id">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn ">Confirmar</button>
+								</div>
+							</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
@@ -409,7 +426,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 				</div>
 				<div class="pull-left info">
 					<p><?php echo($sessao_usuario['nome']);  ?></p>
-					<a href="controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
+					<a href="../../controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
 				</div>
 			</div>
 			<!-- sidebar menu: : style can be found in sidebar.less -->
@@ -466,7 +483,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 
 		<!-- Main content -->
 		<section class="content">
-			<div <?php if($alert != '' && isset($_GET['e'])) echo "class='$alert'"; ?>><?php if($mensagem != '' && isset($_GET['e'])) echo $mensagem; ; ?></div>
+			<div <?php if($alert != '' && isset($_GET['e'])) echo "class='$alert'"; ?>><?php if($mensagem != '' && isset($_GET['e'])) echo $mensagem; ?></div>
+			<div <?php if($alert != '' && isset($_GET['d'])) echo "class='$alert'"; ?>><?php if($mensagem != '' && isset($_GET['d'])) echo $mensagem; ?></div>
 			<div class="row">
 
 				<!-- fix for small devices only -->
