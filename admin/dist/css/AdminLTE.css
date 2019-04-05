@@ -9,8 +9,8 @@
  * Core: General Layout Style
  * -------------------------
  */
-html,
-body {
+ html,
+ body {
   height: 100%;
 }
 .layout-boxed html,
@@ -24,6 +24,9 @@ body {
   overflow-y: auto;
 }
 /* Layout */
+.img-detalhes-busca{
+  width: 100px;
+}
 .wrapper {
   height: 100%;
   position: relative;
@@ -51,8 +54,8 @@ body {
 /*
  * Content Wrapper - contains the main content
  */
-.content-wrapper,
-.main-footer {
+ .content-wrapper,
+ .main-footer {
   -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
@@ -185,7 +188,7 @@ a:focus {
  * Component: Main Header
  * ----------------------
  */
-.main-header {
+ .main-header {
   position: relative;
   max-height: 100px;
   z-index: 1030;
@@ -408,7 +411,7 @@ a:focus {
  * Component: Sidebar
  * ------------------
  */
-.main-sidebar {
+ .main-sidebar {
   position: absolute;
   top: 0;
   left: 0;
@@ -555,7 +558,7 @@ a:focus {
 /*
  * Component: Sidebar Mini
  */
-@media (min-width: 768px) {
+ @media (min-width: 768px) {
   .sidebar-mini.sidebar-collapse .content-wrapper,
   .sidebar-mini.sidebar-collapse .right-side,
   .sidebar-mini.sidebar-collapse .main-footer {
@@ -675,7 +678,7 @@ a:focus {
 /*
  * Component: Control sidebar. By default, this is the right sidebar.
  */
-.control-sidebar-bg {
+ .control-sidebar-bg {
   position: fixed;
   z-index: 1000;
   bottom: 0;
@@ -905,8 +908,8 @@ a:focus {
  * Component: Dropdown menus
  * -------------------------
  */
-/*Dropdowns in general*/
-.dropdown-menu {
+ /*Dropdowns in general*/
+ .dropdown-menu {
   box-shadow: none;
   border-color: #eee;
 }
@@ -1157,7 +1160,7 @@ a:focus {
   }
 }
 /* Add fade animation to dropdown menus by appending
- the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
+the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
 .open:not(.dropup) > .animated-dropdown-menu {
   backface-visibility: visible !important;
   -webkit-animation: flipInX 0.7s both;
@@ -1234,7 +1237,7 @@ a:focus {
  * Component: Form
  * ---------------
  */
-.form-control {
+ .form-control {
   border-radius: 0;
   box-shadow: none;
   border-color: #d2d6de;
@@ -1319,8 +1322,8 @@ a:focus {
  * Component: Progress Bar
  * -----------------------
  */
-.progress,
-.progress > .progress-bar {
+ .progress,
+ .progress > .progress-bar {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -1450,7 +1453,7 @@ a:focus {
  * Component: Small Box
  * --------------------
  */
-.small-box {
+ .small-box {
   border-radius: 2px;
   position: relative;
   display: block;
@@ -1528,7 +1531,7 @@ a:focus {
  * Component: Box
  * --------------
  */
-.box {
+ .box {
   position: relative;
   border-radius: 3px;
   background: #ffffff;
@@ -2009,7 +2012,7 @@ a:focus {
  * Component: Info Box
  * -------------------
  */
-.info-box {
+ .info-box {
   display: block;
   min-height: 90px;
   background: #fff;
@@ -2080,7 +2083,7 @@ a:focus {
  * Component: Timeline
  * -------------------
  */
-.timeline {
+ .timeline {
   position: relative;
   margin: 0 0 30px 0;
   padding: 0;
@@ -2178,7 +2181,7 @@ a:focus {
  * Component: Button
  * -----------------
  */
-.btn {
+ .btn {
   border-radius: 3px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2336,7 +2339,7 @@ a:focus {
  * Component: Callout
  * ------------------
  */
-.callout {
+ .callout {
   border-radius: 3px;
   margin: 0 0 20px 0;
   padding: 15px 30px 15px 15px;
@@ -2376,7 +2379,7 @@ a:focus {
  * Component: alert
  * ----------------
  */
-.alert {
+ .alert {
   border-radius: 3px;
 }
 .alert h4 {
@@ -2415,9 +2418,9 @@ a:focus {
  * Component: Nav
  * --------------
  */
-.nav > li > a:hover,
-.nav > li > a:active,
-.nav > li > a:focus {
+ .nav > li > a:hover,
+ .nav > li > a:active,
+ .nav > li > a:focus {
   color: #444;
   background: #f7f7f7;
 }
@@ -2589,7 +2592,7 @@ a:focus {
  * Component: Products List
  * ------------------------
  */
-.products-list {
+ .products-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2642,12 +2645,12 @@ a:focus {
  * Component: Table
  * ----------------
  */
-.table > thead > tr > th,
-.table > tbody > tr > th,
-.table > tfoot > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
+ .table > thead > tr > th,
+ .table > tbody > tr > th,
+ .table > tfoot > tr > th,
+ .table > thead > tr > td,
+ .table > tbody > tr > td,
+ .table > tfoot > tr > td {
   border-top: 1px solid #f4f4f4;
 }
 .table > thead > tr > th {
@@ -2692,7 +2695,7 @@ table.text-center th {
  * Component: Label
  * ----------------
  */
-.label-default {
+ .label-default {
   background-color: #d2d6de;
   color: #444;
 }
@@ -2700,7 +2703,7 @@ table.text-center th {
  * Component: Direct Chat
  * ----------------------
  */
-.direct-chat .box-body {
+ .direct-chat .box-body {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   position: relative;
@@ -2915,7 +2918,7 @@ table.text-center th {
  * Component: Users List
  * ---------------------
  */
-.users-list > li {
+ .users-list > li {
   width: 25%;
   float: left;
   padding: 10px;
@@ -2949,8 +2952,8 @@ table.text-center th {
  * Component: Carousel
  * -------------------
  */
-.carousel-control.left,
-.carousel-control.right {
+ .carousel-control.left,
+ .carousel-control.right {
   background-image: none;
 }
 .carousel-control > .fa {
@@ -2965,7 +2968,7 @@ table.text-center th {
  * Component: modal
  * ----------------
  */
-.modal {
+ .modal {
   background: rgba(0, 0, 0, 0.3);
 }
 .modal-content {
@@ -3010,7 +3013,7 @@ table.text-center th {
  * Component: Social Widgets
  * -------------------------
  */
-.box-widget {
+ .box-widget {
   border: none;
   position: relative;
 }
@@ -3100,7 +3103,7 @@ table.text-center th {
  * Page: Mailbox
  * -------------
  */
-.mailbox-messages > .table {
+ .mailbox-messages > .table {
   margin: 0;
 }
 .mailbox-controls {
@@ -3169,8 +3172,8 @@ table.text-center th {
  * Page: Lock Screen
  * -----------------
  */
-/* ADD THIS CLASS TO THE <BODY> TAG */
-.lockscreen {
+ /* ADD THIS CLASS TO THE <BODY> TAG */
+ .lockscreen {
   background: #d2d6de;
 }
 .lockscreen-logo {
@@ -3235,8 +3238,8 @@ table.text-center th {
  * Page: Login & Register
  * ----------------------
  */
-.login-logo,
-.register-logo {
+ .login-logo,
+ .register-logo {
   font-size: 35px;
   text-align: center;
   margin-bottom: 25px;
@@ -3287,7 +3290,7 @@ table.text-center th {
  * Page: 400 and 500 error pages
  * ------------------------------
  */
-.error-page {
+ .error-page {
   width: 600px;
   margin: 20px auto 0 auto;
 }
@@ -3329,7 +3332,7 @@ table.text-center th {
  * Page: Invoice
  * -------------
  */
-.invoice {
+ .invoice {
   position: relative;
   background: #fff;
   border: 1px solid #f4f4f4;
@@ -3343,7 +3346,7 @@ table.text-center th {
  * Page: Profile
  * -------------
  */
-.profile-user-img {
+ .profile-user-img {
   margin: 0 auto;
   width: 100px;
   padding: 3px;
@@ -3375,7 +3378,7 @@ table.text-center th {
  *
  * https://github.com/lipis/bootstrap-social
  */
-.btn-social {
+ .btn-social {
   position: relative;
   padding-left: 44px;
   text-align: left;
@@ -4131,7 +4134,7 @@ table.text-center th {
  * Plugin: Full Calendar
  * ---------------------
  */
-.fc-button {
+ .fc-button {
   background: #f4f4f4;
   background-image: none;
   color: #444;
@@ -4224,12 +4227,12 @@ table.text-center th {
  * Plugin: Select2
  * ---------------
  */
-.select2-container--default.select2-container--focus,
-.select2-selection.select2-container--focus,
-.select2-container--default:focus,
-.select2-selection:focus,
-.select2-container--default:active,
-.select2-selection:active {
+ .select2-container--default.select2-container--focus,
+ .select2-selection.select2-container--focus,
+ .select2-container--default:focus,
+ .select2-selection:focus,
+ .select2-container--default:active,
+ .select2-selection:active {
   outline: none;
 }
 .select2-container--default .select2-selection--single,
@@ -4346,7 +4349,7 @@ table.text-center th {
  * General: Miscellaneous
  * ----------------------
  */
-.pad {
+ .pad {
   padding: 10px;
 }
 .margin {
@@ -4938,7 +4941,7 @@ table.text-center th {
  * Misc: print
  * -----------
  */
-@media print {
+ @media print {
   .no-print,
   .main-sidebar,
   .left-side,
@@ -4978,3 +4981,4 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+

@@ -142,8 +142,6 @@ class Usuario{
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());
 		}
-
-
 	}
 
 	public function checarEmail(){//Verifica se email ja está cadastrado
@@ -177,7 +175,7 @@ class Usuario{
 		try{
 
 			$termo = "%".$termo."%";
-			$sql = "SELECT * FROM usuarios where email LIKE :termo OR nome LIKE :termo  ";
+			$sql = "SELECT * FROM usuarios where (email LIKE :termo OR nome LIKE :termo) AND admin = 0 ORDER BY nome ";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 
