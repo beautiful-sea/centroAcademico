@@ -445,7 +445,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-circle-o"></i> Gerenciar</a></li>
+						<li><a href="#"><i class="fa fa-circle"></i> Gerenciar</a></li>
 
 					</ul>
 				</li>
@@ -457,7 +457,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="../loja/produtos.php"><i class="fa fa-circle-o"></i> Produtos</a></li>
+						<li><a href="../loja/produtos.php"><i class="far fa-circle"></i> Produtos</a></li>
 
 					</ul>
 				</li>

@@ -142,8 +142,6 @@ class Usuario{
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());
 		}
-
-
 	}
 
 	public function checarEmail(){//Verifica se email ja está cadastrado

@@ -11,24 +11,28 @@ if(!isset($_SESSION['usuario'])){
 	$qntd_usuarios = count($usuario->getTodos());
 
 	$mensagem = '';//Mensagem de retorno ao enviar formulario de cadastro
-	$alert = ''; //Define a cordo do alert gerado para mensagem
-	if(isset($_GET['r'])){//Verifica se existe alguma mensagem ao 'r'egistrar usuario
+	$alert = ''; //Define a cor do do alert gerado para mensagem
+	if(isset($_GET['r'])){//Verifica se existe alguma mensagem ao 'r'egistrar produto
 	switch ($_GET['r']) {
 		case 1:
-		$mensagem = "Cadastro Realizado com Sucesso.";
+		$mensagem = "Produto cadastrado com Sucesso.";
 		$alert = 'alert alert-success';
 		break;
 		case 2:
-		$mensagem = "As senhas devem ser iguais.";
+		$mensagem = "Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.";
 		$alert = 'alert alert-warning';
 		break;
 		case 3:
-		$mensagem = "Email já cadastrado.";
+		$mensagem = 'Você poderá enviar apenas arquivos "*.jpg;*.jpeg;*.gif;*.png", com tamanho maximo de 5Mb';
+		$alert = 'alert alert-danger';
+		break;
+		case 4:
+		$mensagem = 'Você não enviou nenhum arquivo!';
 		$alert = 'alert alert-danger';
 		break;
 	}
 }
-	if(isset($_GET['e'])){//Verifica se existe alguma mensagem ao 'e'ditar usuario
+	if(isset($_GET['e'])){//Verifica se existe alguma mensagem ao 'e'ditar produto
 	switch ($_GET['e']) {
 		case 1:
 		$mensagem = "Dados Editados com sucesso.";
@@ -37,15 +41,10 @@ if(!isset($_SESSION['usuario'])){
 	}
 }
 
-	if(isset($_GET['d'])){//Verifica se existe alguma mensagem ao 'd'eletar usuario
+	if(isset($_GET['d'])){//Verifica se existe alguma mensagem ao 'd'eletar produto
 	switch ($_GET['d']) {
 		case 1:
-		$mensagem = "Usuário removido com sucesso.";
-		$alert = 'alert alert-danger';
-		break;
-
-		case 2:
-		$mensagem = "Não é possivel deletar sua própria conta.";
+		$mensagem = "Produto removido com sucesso.";
 		$alert = 'alert alert-danger';
 		break;
 	}
@@ -71,7 +70,7 @@ if(!isset($_SESSION['usuario'])){
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="../../dist/css/AdminLTE.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
 		folder instead of downloading all of them to reduce the load. -->
 		<link rel="stylesheet" href="../../dist/css/skins/skin-bordo.css">
@@ -114,21 +113,40 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					</div>
 					<div class="modal-body">
 						<div class="box-body" >
-							<form role="form" action="../../controller/usuarios/editar.php" method="POST">
-								<div class="box-body">
-									<div class="form-group">
-										<input type="hidden" name="id" class="form-control" id="editar_id">
+							<div class="box-body">
+								<form role="form" action="../../controller/loja/editar_produtos.php" method="POST" enctype="multipart/form-data">
+									<div class="box-body">
+										<input type="hidden" name="id" class="form-control" id="editar_id" >
+										<div class="form-group">
+											<label for="editar_nome">Nome</label>
+											<input type="text" name="nome" class="form-control" id="editar_nome" placeholder="Digite o nome do produto">
+										</div>
+										<div class="form-group">
+											<label for="editar_valor">Valor</label>
+											<div class="input-group">
+												<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
+												<input type="number" step="0.01" class="form-control" id="editar_valor" name="valor" placeholder="Digite o preço do produto">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="editar_valor_socios">Valor para Sócios</label>
+											<div class="input-group">
+												<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
+												<input type="number" step="0.01" name="valor_socios" id="editar_valor_socios" class="form-control" placeholder="Digite o preço do produto">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="editar_descricao">Descrição</label>
+											<textarea  name="descricao" class="form-control" id="editar_descricao" placeholder="Digite a Descrição do Produto"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="editar_foto">Foto</label>
+											<input type="file" name="foto" class="form-control" id="editar_foto">
+											<p class="help-block">Tamanho maximo: 5mb</p>
+										</div>
 									</div>
-									<div class="form-group">
-										<label for="cadastro_email">Email</label>
-										<input type="email" name="email" class="form-control" id="editar_email" placeholder="Digitar Email">
-									</div>
-									<div class="form-group">
-										<label for="cadastro_nome">Nome</label>
-										<input type="text" name="nome" class="form-control" id="editar_nome" placeholder="Digite o Nome">
-									</div>
+									<!-- /.box-body -->
 								</div>
-
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -170,11 +188,11 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title">Deletar Usuário</h4>
+								<h4 class="modal-title">Deletar Produto</h4>
 							</div>
-							<form action="../../controller/usuarios/deletar.php" method="POST">
+							<form action="../../controller/loja/deletar_produtos.php" method="POST">
 								<div class="modal-body">
-									<p><b style="font-size: 20px">Tem certeza que deseja remover o usuário do sistema?</b></p>
+									<p><b style="font-size: 20px">Tem certeza que deseja remover o produto?</b></p>
 									<input type="hidden" name="id" id="remover_id">
 								</div>
 								<div class="modal-footer">
@@ -445,7 +463,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="../../view/usuarios/gerenciar.php"><i class="fa fa-circle-o"></i> Gerenciar</a></li>
+						<li><a href="../../view/usuarios/gerenciar.php"><i class="far fa-circle"></i> Gerenciar</a></li>
 
 					</ul>
 				</li>
@@ -457,7 +475,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="../loja/produtos.php"><i class="fa fa-circle-o"></i> Produtos</a></li>
+						<li><a href="../loja/produtos.php"><i class="fa fa-circle"></i> Produtos</a></li>
 
 					</ul>
 				</li>
@@ -511,7 +529,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 							<h3 class="box-title">Buscar produtos</h3>
 
 							<div class="box-tools">
-								<form role="form" action="#" method="POST" id="form_buscar_usuario">
+								<form role="form" action="#" method="POST" id="form_buscar_produto">
 									<div class="input-group input-group-sm" style="width: 150px;">
 										<input type="text" name="buscar_produto" class="form-control pull-right" placeholder="Nome do Produto" id="consulta">
 
@@ -551,14 +569,14 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 										<label for="cadastro_valor">Valor</label>
 										<div class="input-group">
 											<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
-											<input type="number" class="form-control" id="cadastro_valor" name="valor" placeholder="Digite o preço do produto">
+											<input type="number" step="0.01" class="form-control" id="cadastro_valor" name="valor" placeholder="Digite o preço do produto">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="cadastro_valor_socios">Valor para Sócios</label>
 										<div class="input-group">
 											<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
-											<input type="number" name="valor_socios" id="cadastro_valor_socios" class="form-control" placeholder="Digite o preço do produto">
+											<input type="number" step="0.01" name="valor_socios" id="cadastro_valor_socios" class="form-control" placeholder="Digite o preço do produto">
 										</div>
 									</div>
 									<div class="form-group">
@@ -568,7 +586,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									<div class="form-group">
 										<label for="cadastro_foto">Foto</label>
 										<input type="file" name="foto" class="form-control" id="cadastro_foto">
-										<p class="help-block">Tamanho maximo: 8mb</p>
+										<p class="help-block">Tamanho maximo: 5mb</p>
 									</div>
 								</div>
 								<!-- /.box-body -->

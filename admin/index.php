@@ -8,8 +8,10 @@ if(!isset($_SESSION['usuario'])){
 }else{
 	$sessao_usuario = $_SESSION['usuario'];
 	$usuario = new Usuario();
-
 	$qntd_usuarios = count($usuario->getTodos());
+
+	$produto = new Produto();
+	$qntd_produtos = count($produto->buscarTodos());
 }
 
 
@@ -25,7 +27,7 @@ if(!isset($_SESSION['usuario'])){
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="bower_components/font-awesome/css/all.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 	<!-- jvectormap -->
@@ -72,7 +74,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<!-- Messages: style can be found in dropdown.less-->
 						<li class="dropdown messages-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-envelope-o"></i>
+								<i class="fa fa-envelope"></i>
 								<span class="label label-success">4</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -87,7 +89,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 												</div>
 												<h4>
 													Support Team
-													<small><i class="fa fa-clock-o"></i> 5 mins</small>
+													<small><i class="fa fa-clock"></i> 5 mins</small>
 												</h4>
 												<p>Why not buy a new awesome theme?</p>
 											</a>
@@ -100,7 +102,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 												</div>
 												<h4>
 													AdminLTE Design Team
-													<small><i class="fa fa-clock-o"></i> 2 hours</small>
+													<small><i class="fa fa-clock"></i> 2 hours</small>
 												</h4>
 												<p>Why not buy a new awesome theme?</p>
 											</a>
@@ -149,7 +151,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<!-- Notifications: style can be found in dropdown.less -->
 						<li class="dropdown notifications-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-bell-o"></i>
+								<i class="fa fa-bell"></i>
 								<span class="label label-warning">10</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -191,7 +193,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<!-- Tasks: style can be found in dropdown.less -->
 						<li class="dropdown tasks-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-flag-o"></i>
+								<i class="fa fa-flag"></i>
 								<span class="label label-danger">9</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -268,7 +270,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 		</li>
 		
 		<li>
-			<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+			<a href="#" data-toggle="control-sidebar"><i class="fa fa-cog"></i></a>
 		</li>
 	</ul>
 </div>
@@ -286,15 +288,15 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 			</div>
 			<div class="pull-left info">
 				<p><?php echo($sessao_usuario['nome']);  ?></p>
-				<a href="controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
+				<a href="../../controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
 			</div>
 		</div>
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu" data-widget="tree">
-			
+
 			<li>
-				<a href="/centroAcademico/admin/index.php">
-					<i class="fa fa-dashboard"></i> <span>Painel</span>
+				<a href="#">
+					<i class="fa fa-tachometer-alt"></i> <span>Painel</span>
 				</a>
 			</li>
 			<li class="treeview">
@@ -305,23 +307,36 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="view/usuarios/gerenciar.php"><i class="fa fa-circle-o"></i> Gerenciar</a></li>
+					<li><a href="view/usuarios/gerenciar.php"><i class="far fa-circle"></i> Gerenciar</a></li>
+
 				</ul>
 			</li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-gears"></i> <span>Configurações</span>
+					<i class="fa fa-store"></i> <span>Vitrine Online</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
-					<li><a href="index.html"><i class="fa fa-circle-o"></i> Editar</a></li>
+					<li><a href="view/loja/produtos.php"><i class="far fa-circle"></i> Produtos</a></li>
 
 				</ul>
 			</li>
-			
+			<li class="treeview">
+				<a href="#">
+					<i class="fa fa-cog"></i> <span>Configurações</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="index.html"><i class="far fa-circle"></i> Cadastrar</a></li>
+					<li><a href="index.html"><i class="far fa-circle"></i> Editar</a></li>
+
+				</ul>
+			</li>
+
 		</ul>
 	</section>
 	<!-- /.sidebar -->
@@ -355,6 +370,19 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="info-box-content">
 						<span class="info-box-text">Vendas</span>
 						<span class="info-box-number">760</span>
+					</div>
+					<!-- /.info-box-content -->
+				</div>
+				<!-- /.info-box -->
+			</div>
+
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-blue"><i class="fa fa-tshirt"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">Produtos <br>Cadastrados</span>
+						<span class="info-box-number"><?php echo $qntd_produtos; ?></span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -565,7 +593,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 				<div class="form-group">
 					<label class="control-sidebar-subheading">
 						Delete chat history
-						<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+						<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash"></i></a>
 					</label>
 				</div>
 				<!-- /.form-group -->
