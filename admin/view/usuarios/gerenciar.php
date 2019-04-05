@@ -29,27 +29,27 @@ if(!isset($_SESSION['usuario'])){
 	}
 }
 	if(isset($_GET['e'])){//Verifica se existe alguma mensagem ao 'e'ditar usuario
-		switch ($_GET['e']) {
-			case 1:
-			$mensagem = "Dados Editados com sucesso.";
-			$alert = 'alert alert-success';
-			break;
-		}
+	switch ($_GET['e']) {
+		case 1:
+		$mensagem = "Dados Editados com sucesso.";
+		$alert = 'alert alert-success';
+		break;
 	}
+}
 
 	if(isset($_GET['d'])){//Verifica se existe alguma mensagem ao 'd'eletar usuario
-		switch ($_GET['d']) {
-			case 1:
-			$mensagem = "Usuário removido com sucesso.";
-			$alert = 'alert alert-danger';
-			break;
+	switch ($_GET['d']) {
+		case 1:
+		$mensagem = "Usuário removido com sucesso.";
+		$alert = 'alert alert-danger';
+		break;
 
-			case 2:
-			$mensagem = "Não é possivel deletar sua própria conta.";
-			$alert = 'alert alert-danger';
-			break;
-		}
+		case 2:
+		$mensagem = "Não é possivel deletar sua própria conta.";
+		$alert = 'alert alert-danger';
+		break;
 	}
+}
 }
 
 ?>
@@ -505,7 +505,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">Buscar usuários</h3>
-
+							<button class=" btn btn-default btn-raised" id="todos_usuarios">Todos</button>
 							<div class="box-tools">
 								<form role="form" action="#" method="POST" id="form_buscar_usuario">
 									<div class="input-group input-group-sm" style="width: 150px;">

@@ -2,14 +2,20 @@
 session_start();
 
 require_once("../../auto_load.php");
-$consulta = $_POST['consulta'];
 
 $usuario = new Usuario;
 
-if($consulta != ''){
-	echo json_encode($usuario->buscarUsuario($consulta));	
+if(isset($_POST['todos']) && $_POST['todos'] == 1){
+	echo json_encode($usuario->getTodos());
 }else{
-	return false;
+	$consulta = $_POST['consulta'];
+
+	if($consulta != ''){
+		echo json_encode($usuario->buscarUsuario($consulta));	
+	}else{
+		return false;
+	}	
 }
+
 
 ?>
