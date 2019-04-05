@@ -4,7 +4,7 @@
 spl_autoload_register(function($nomeClasse){
 
 	
-	$pastas = ["model/$nomeClasse.php","../model/$nomeClasse.php","../../model/$nomeClasse.php"];
+	$pastas = ["model/$nomeClasse.php","../model/$nomeClasse.php","../../model/$nomeClasse.php","../admin/model/$nomeClasse.php"];
 
 	foreach ($pastas as $pasta) {
 		if(file_exists($pasta)){
