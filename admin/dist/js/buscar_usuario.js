@@ -21,8 +21,40 @@ $(document).ready(function(){
 					});
 
 					$("#resultado_consulta").html(tabela_de_resultado);
+					$(".btn-detalhes").on("click",function(){//Ao clicar no botão de detalhes
+						botao = this;
+						id = botao.getAttribute("data-detalhes");//Pegando id do usuario pelo atributo do botao
+						$.each(data, function(chave,valor){
+							if(valor.id == id){
+								$("#body-modal-detalhes").html('<dt>ID:</dt><dd>'+valor.id+'</dd>\
+									<dt>Nome:</dt><dd>'+valor.nome+'</dd>\
+									<dt>Email:</dt><dd>'+valor.email+'</dd>');
+							}
+						})
+					});
 
-					console.log(window.location);
+					$(".btn-editar").on("click",function(){//Ao clicar no botão de edição do usuário
+						botao = this;
+						id = botao.getAttribute("data-editar");//Pegando id do usuario pelo atributo do botao
+
+						$.each(data, function(chave,valor){
+							if(valor.id == id){
+								$("#editar_email").val(valor.email);
+								$("#editar_nome").val(valor.nome);
+								$("#editar_id").val(valor.id);
+							}
+						})
+					});
+
+					$(".btn-remover").on("click",function(){//Ao clicar no botão de remover usuário
+						botao = this;
+						id = botao.getAttribute("data-remover");//Pegando id do usuario pelo atributo do botao
+						$.each(data, function(chave,valor){
+							if(valor.id == id){
+								$("#remover_id").val(valor.id);
+							}
+						})
+					});
 				}
 			});
 	});

@@ -1,12 +1,17 @@
 <?php
 
 require_once("../../auto_load.php");
-$consulta = $_POST['consulta'];
+
 
 $produto = new Produto;
 
-if($consulta != ''){
-	echo json_encode($produto->buscarProduto($consulta));	
+if(isset($_POST['todos']) && $_POST['todos'] == 1){
+	echo json_encode($produto->buscarTodos());
 }else{
-	return false;
+	$consulta = $_POST['consulta'];
+	if($consulta != ''){
+		echo json_encode($produto->buscarProduto($consulta));	
+	}else{
+		return false;
+	}	
 }

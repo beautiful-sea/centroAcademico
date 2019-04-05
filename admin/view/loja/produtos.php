@@ -527,7 +527,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">Buscar produtos</h3>
-
+							<button class=" btn btn-default btn-raised" id="todos_produtos">Todos</button>
 							<div class="box-tools">
 								<form role="form" action="#" method="POST" id="form_buscar_produto">
 									<div class="input-group input-group-sm" style="width: 150px;">
