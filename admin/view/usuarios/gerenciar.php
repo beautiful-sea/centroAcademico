@@ -29,27 +29,27 @@ if(!isset($_SESSION['usuario'])){
 	}
 }
 	if(isset($_GET['e'])){//Verifica se existe alguma mensagem ao 'e'ditar usuario
-		switch ($_GET['e']) {
-			case 1:
-			$mensagem = "Dados Editados com sucesso.";
-			$alert = 'alert alert-success';
-			break;
-		}
+	switch ($_GET['e']) {
+		case 1:
+		$mensagem = "Dados Editados com sucesso.";
+		$alert = 'alert alert-success';
+		break;
 	}
+}
 
 	if(isset($_GET['d'])){//Verifica se existe alguma mensagem ao 'd'eletar usuario
-		switch ($_GET['d']) {
-			case 1:
-			$mensagem = "Usuário removido com sucesso.";
-			$alert = 'alert alert-danger';
-			break;
+	switch ($_GET['d']) {
+		case 1:
+		$mensagem = "Usuário removido com sucesso.";
+		$alert = 'alert alert-danger';
+		break;
 
-			case 2:
-			$mensagem = "Não é possivel deletar sua própria conta.";
-			$alert = 'alert alert-danger';
-			break;
-		}
+		case 2:
+		$mensagem = "Não é possivel deletar sua própria conta.";
+		$alert = 'alert alert-danger';
+		break;
 	}
+}
 }
 
 ?>
@@ -65,7 +65,7 @@ if(!isset($_SESSION['usuario'])){
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../bower_components/font-awesome/css/all.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
 	<!-- jvectormap -->
@@ -212,7 +212,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									<!-- Messages: style can be found in dropdown.less-->
 									<li class="dropdown messages-menu">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											<i class="fa fa-envelope-o"></i>
+											<i class="fa fa-envelope"></i>
 											<span class="label label-success">4</span>
 										</a>
 										<ul class="dropdown-menu">
@@ -227,7 +227,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 															</div>
 															<h4>
 																Support Team
-																<small><i class="fa fa-clock-o"></i> 5 mins</small>
+																<small><i class="fa fa-clock"></i> 5 mins</small>
 															</h4>
 															<p>Why not buy a new awesome theme?</p>
 														</a>
@@ -240,7 +240,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 															</div>
 															<h4>
 																AdminLTE Design Team
-																<small><i class="fa fa-clock-o"></i> 2 hours</small>
+																<small><i class="fa fa-clock"></i> 2 hours</small>
 															</h4>
 															<p>Why not buy a new awesome theme?</p>
 														</a>
@@ -289,7 +289,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									<!-- Notifications: style can be found in dropdown.less -->
 									<li class="dropdown notifications-menu">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											<i class="fa fa-bell-o"></i>
+											<i class="fa fa-bell"></i>
 											<span class="label label-warning">10</span>
 										</a>
 										<ul class="dropdown-menu">
@@ -331,7 +331,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									<!-- Tasks: style can be found in dropdown.less -->
 									<li class="dropdown tasks-menu">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											<i class="fa fa-flag-o"></i>
+											<i class="fa fa-flag"></i>
 											<span class="label label-danger">9</span>
 										</a>
 										<ul class="dropdown-menu">
@@ -408,7 +408,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					</li>
 
 					<li>
-						<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+						<a href="#" data-toggle="control-sidebar"><i class="fa fa-cog"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -434,7 +434,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 
 				<li>
 					<a href="../../index.php">
-						<i class="fa fa-dashboard"></i> <span>Painel</span>
+						<i class="fa fa-tachometer-alt"></i> <span>Painel</span>
 					</a>
 				</li>
 				<li class="treeview">
@@ -445,13 +445,25 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-circle-o"></i> Gerenciar</a></li>
+						<li><a href="#"><i class="fa fa-circle"></i> Gerenciar</a></li>
 
 					</ul>
 				</li>
 				<li class="treeview">
 					<a href="#">
-						<i class="fa fa-gears"></i> <span>Configurações</span>
+						<i class="fa fa-store"></i> <span>Vitrine Online</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="../loja/produtos.php"><i class="far fa-circle"></i> Produtos</a></li>
+
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-cog"></i> <span>Configurações</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -476,7 +488,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 			</h1>
 
 			<ol class="breadcrumb">
-				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#"><i class="fa fa-tachometer-alt"></i> Home</a></li>
 				<li class="active">Gerenciamento de contas</li>
 			</ol>
 		</section>
@@ -493,7 +505,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">Buscar usuários</h3>
-
+							<button class=" btn btn-default btn-raised" id="todos_usuarios">Todos</button>
 							<div class="box-tools">
 								<form role="form" action="#" method="POST" id="form_buscar_usuario">
 									<div class="input-group input-group-sm" style="width: 150px;">
@@ -559,7 +571,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					</div>
 				</div>
 
-			</div>
+			</div><!-- /.row -->
 
 
 		</section>
