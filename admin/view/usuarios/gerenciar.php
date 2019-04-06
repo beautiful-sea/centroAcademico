@@ -804,8 +804,6 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 	<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<!-- ChartJS -->
 	<script src="../../bower_components/chart.js/Chart.js"></script>
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="../../dist/js/pages/dashboard2.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../dist/js/demo.js"></script>
 	<script src="../../dist/js/buscar_usuario.js"></script>
