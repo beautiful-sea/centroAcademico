@@ -294,7 +294,7 @@ $produtos = $produto->buscarTodos();
 												<b>R$ ' . $produto['valor_socios'] . '</b>
 											</h2>
 											<div class="d-inline">
-												<h4 class="color-bordo d-inline"><b>Sócio</b></h4></div>
+												<h4 class="color-bordo-inverse d-inline"><b>Sócio</b></h4></div>
 											</div>
 											<p>
 												R$ ' . $produto['valor'] . ' para não sócios
