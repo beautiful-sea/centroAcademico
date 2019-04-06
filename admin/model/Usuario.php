@@ -6,6 +6,7 @@ class Usuario{
 	private $nome;
 	private $email;
 	private $senha;
+	private $admin;
 
 
 	public function getNome(){
@@ -26,7 +27,12 @@ class Usuario{
 	public function setSenha($senha){
 		$this->senha = $senha;
 	}
-
+	public function getAdmin(){
+		return $this->admin;
+	}
+	public function setAdmin($admin){
+		$this->admin = $admin;
+	}
 	public function __construct(){
 
 
@@ -70,7 +76,7 @@ class Usuario{
 
 	public function getTodos(){//Retorna todos usuarios que não são administradores
 		try{
-			$sql = "SELECT * FROM usuarios WHERE admin = 0";
+			$sql = "SELECT * FROM usuarios";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 
@@ -112,13 +118,14 @@ class Usuario{
 	public function editar($id){
 
 		try{
-			$sql = "UPDATE usuarios SET nome = :nome,email = :email WHERE id = :id";
+			$sql = "UPDATE usuarios SET nome = :nome,email = :email, admin = :admin WHERE id = :id";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 
 			$stmt->bindValue(':nome',$this->getNome());
 			$stmt->bindValue(':email',$this->getEmail());
 			$stmt->bindValue(':id',$id);
+			$stmt->bindValue(':admin',$this->getAdmin());
 
 			return $stmt->execute();
 		}catch(Exception $e){
@@ -175,7 +182,7 @@ class Usuario{
 		try{
 
 			$termo = "%".$termo."%";
-			$sql = "SELECT * FROM usuarios where (email LIKE :termo OR nome LIKE :termo) AND admin = 0 ORDER BY nome ";
+			$sql = "SELECT * FROM usuarios where (email LIKE :termo OR nome LIKE :termo) ORDER BY nome ";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 

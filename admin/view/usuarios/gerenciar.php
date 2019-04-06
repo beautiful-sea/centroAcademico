@@ -127,6 +127,14 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 										<label for="cadastro_nome">Nome</label>
 										<input type="text" name="nome" class="form-control" id="editar_nome" placeholder="Digite o Nome">
 									</div>
+									<div class="form-group">
+										<label for="cadastro_nome">Tipo de Usuário</label><br>
+										<div id="tipo_de_usuario">
+											
+										</div>
+										
+									</div>
+
 								</div>
 
 							</div>
@@ -801,5 +809,6 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../dist/js/demo.js"></script>
 	<script src="../../dist/js/buscar_usuario.js"></script>
+	
 </body>
 </html>

@@ -42,6 +42,20 @@ $(document).ready(function(){
 								$("#editar_email").val(valor.email);
 								$("#editar_nome").val(valor.nome);
 								$("#editar_id").val(valor.id);
+								if(valor.admin == 1){
+									console.log('admin');
+									$("#tipo_de_usuario").html('<input type="radio" name="admin" checked id="tipo_1" value="1">\
+										<span>Administrador</span><br>\
+										<input type="radio" name="admin" id="tipo_0" value="0">\
+										<span>Cliente</span>');
+								}else{
+									console.log('cliente');
+
+									$("#tipo_de_usuario").html('<input type="radio" name="admin" id="tipo_1" value="1">\
+										<span>Administrador</span><br>\
+										<input type="radio" name="admin" id="tipo_0" checked value="0">\
+										<span>Cliente</span>');
+								}
 							}
 						})
 					});
