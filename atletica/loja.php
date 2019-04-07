@@ -202,7 +202,7 @@ $produtos = $produto->buscarTodos();
 						</li>
 
 						<li class="nav-item active">
-							<a href="loja.html" class="nav-link animated fadeIn animation-delay-9" role="button">Produtos</a>
+							<a href="loja.php" class="nav-link animated fadeIn animation-delay-9" role="button">Produtos</a>
 						</li>
 
 						<li class="nav-item">
