@@ -9302,11 +9302,11 @@ textarea.form-control {
 }
 
 .form-control-number {
-    width: 60px!important;
+    width: 80px!important;
     text-align: center;
     padding-left: 15px;
     padding-right: 15px;
-    display: inline-block;
+    display: inline;
 }
 
 .form-inline {
@@ -16331,7 +16331,7 @@ body.lb-disable-scrolling {
     animation-name: material;
     animation-duration: 1s;
     color: #424242;
-    background-color: #03a9f4;
+    background-color: #781a20;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
     width: 300px;
     position: fixed;
@@ -16368,7 +16368,7 @@ body.lb-disable-scrolling {
     margin: 0;
     padding: 0;
     color: #fff;
-    background-color: #03a9f4;
+    background-color: #781a20;
     height: 50px;
 }
 
@@ -16414,7 +16414,7 @@ body.lb-disable-scrolling {
 
 .ms-configurator .panel-group .panel .panel-heading .panel-title a {
     display: block;
-    background-color: #03a9f4;
+    background-color: #781a20;
     color: #fff;
     text-transform: uppercase;
     height: 50px;

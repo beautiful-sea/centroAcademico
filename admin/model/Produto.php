@@ -110,7 +110,7 @@ class Produto{
 
 		// verifica se foi enviado um arquivo
 		if ( isset( $imagem[ 'name' ] ) && $imagem[ 'error' ] == 0 ) {
-
+			echo "string";
 
 			$arquivo_tmp = $imagem[ 'tmp_name' ];
 			$nome = $imagem[ 'name' ];
