@@ -12,7 +12,7 @@ $produto->setValor($_POST['valor']);
 $produto->setValor_socios($_POST['valor_socios']);
 $produto->setFoto($_FILES['foto']);
 
-if($produto->cadastrar()){
+if($produto->cadastrar() === true){
 	header("Location: ../../view/loja/produtos.php?r=1");
 }else{
 	header("Location: ../../view/loja/produtos.php?r=$cadastro");

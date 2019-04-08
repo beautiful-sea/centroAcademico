@@ -102,6 +102,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 </style>
 </head>
 <body class="hold-transition skin-bordo sidebar-mini fixed">
+	
 	<!-- Modal Editar -->
 	<div class="modal fade" id="modal-editar">
 		<div class="modal-dialog">
