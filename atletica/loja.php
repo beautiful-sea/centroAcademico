@@ -49,13 +49,12 @@ $produtos = $produto->buscarTodos();
 							</div>
 							<div id="ms-collapse-conf-1" class="card-collapse collapse show" role="tabpanel" aria-labelledby="ms-conf-header-color" data-parent="#accordion_conf">
 								<div class="panel-body">
-									<div class="form-group row justify-content-end">
-										<label for="tipo_cliente" class="col-lg-2 control-label">É Sócio?</label>
-
-										<div class="col-lg-10">
-											<select id="tipo_cliente" class="color-white" onchange="add_carrinho()" data-dropup-auto="true">
-												<option value="1">Sim </option>
-												<option value="0">Não</option>
+									<div class=" row justify-content-end">
+										<div class="col-lg-12">
+											<select id="tipo_cliente" class="color-white form-control" onchange="setTipoCliente(this.value)" data-dropup-auto="true">
+												<option class="color-black" disabled="" selected>SELECIONE UMA OPÇÃO</option>
+												<option class="color-black" value="1">Sou sócio da Atlética </option>
+												<option class="color-black" value="0">Não sou sócio da Atlética </option>
 											</select>
 										</div>
 									</div>
