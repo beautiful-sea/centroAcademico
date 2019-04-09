@@ -46,6 +46,7 @@ function atualiza_carrinho_html(itens){//Atualiza os itens no html
 	$(".total_compra").html('\
 		<h4 class="d-inline">Total da compra: R$</h4> <h3 class="d-inline">'+valor_total+',00</h3><br>\
 		');	
+	atualiza_resumo_pedido(carrinho);
 }
 
 function setTipoCliente(value){//Atualiza o carrinho de acordo com o tipo de cliente
@@ -67,3 +68,19 @@ function atualiza_quantidade_produto(id_produto,qntd){
 		}
 	})
 }
+
+function atualiza_resumo_pedido(carrinho){
+	$("#body-resumo-produtos").html('');
+	$.each(carrinho, function(chave,valor){
+		$("#body-resumo-produtos").append('<p class="color-bordo">'+valor.qntd+' '+valor.nome+'</p>');
+	});
+}
+
+//Atualizar dados do comprador no resumo ao preenche-los
+$("#input_nome_comprador").blur(function(){
+	$("#resumo_nome_comprador").html(this.value);
+});
+$("#input_email_comprador").blur(function(){
+	$("#resumo_email_comprador").html(this.value);
+});
+

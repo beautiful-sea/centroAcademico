@@ -53,8 +53,8 @@ $produtos = $produto->buscarTodos();
 										<div class="col-lg-12">
 											<select id="tipo_cliente" class="color-white form-control" onchange="setTipoCliente(this.value)" data-dropup-auto="true">
 												<option class="color-black" disabled="" selected>SELECIONE UMA OPÇÃO</option>
-												<option class="color-black" value="1">Sou sócio da Atlética </option>
-												<option class="color-black" value="0">Não sou sócio da Atlética </option>
+												<option class="color-bordo" value="1">Sou sócio da Atlética </option>
+												<option class="color-bordo" value="0">Não sou sócio da Atlética </option>
 											</select>
 										</div>
 									</div>
@@ -86,19 +86,55 @@ $produtos = $produto->buscarTodos();
 										</div>										
 										<div class="form-group">
 											<label>Seu Nome: </label>
-											<input type="text" class="form-control" name="nome" >
+											<input  type="text" class="form-control color-white" id="input_nome_comprador" name="nome" >
 										</div>
 										<div class="form-group">
 											<label>Seu Email: </label>
-											<input type="text" class="form-control" name="nome">
+											<input type="text" class="form-control color-white" id="input_email_comprador" name="nome">
 										</div>										
 									</div>
 									
 								</div>
 							</div>
 						</div>
-					</div>
+						<div class="panel-group" id="accordion_conf" role="tablist" aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="ms-conf-header-color">
+									<h4 class="panel-title">
+										<a role="button" class="withripple" data-toggle="collapse" href="#ms-collapse-conf-3" aria-expanded="true" aria-controls="ms-collapse-conf-3">
+											<i class=""></i> Resumo </a>
+										</h4>
+									</div>
+									<div id="ms-collapse-conf-3" class="card-collapse collapse" role="tabpanel" aria-labelledby="ms-conf-header-color" data-parent="#accordion_conf">
+										<div class="panel-body" style="height: 400px;overflow: auto;">
+											<div id="body-resumo-comprador">
+												<div class="card container ">
+													<h4 class="color-bordo"><b>Seus Dados:</b></h4>
+													<p class="color-bordo">Nome: <span id="resumo_nome_comprador"></span></p>
+													<p class="color-bordo">Email: <span id="resumo_email_comprador"></span> </p>
+												</div>
+											</div>
+											<hr>
+											<div>
+												<div class="card container ">
+													<h4 class="color-bordo"><b>Produtos:</b></h4>
+													<div id="body-resumo-produtos">
+														<p class="color-bordo">Seu carrinho está vazio, que tal adicionar algumas coisas!?</p>
+													</div>	
+												</div>
+											</div>
+											<button class="btn btn-raised btn-bordo">Finalizar Pedido</button>								
+										</div>
+										<div class="panel-footer">
+											<h4>Total do pedido: R$</h4>
+										</div>
 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 			<div id="ms-preload" class="ms-preload">
@@ -384,7 +420,7 @@ $produtos = $produto->buscarTodos();
 								<p>
 								R$ ' . $produto['valor'] . ' para não sócios
 								</p>
-								<a href="javascript:void(0)" onclick="add_carrinho('.$produto['id'].')" class="ms-conf-btn animated rubberBand btn btn-bordo btn-sm btn-block btn-raised  no-mb"><i
+								<a href="javascript:void(0)" onclick="add_carrinho('.$produto['id'].')" class="ms-conf-btn animated rubberBand btn btn-bordo btn-sm btn-block btn-raised"><i
 								class="zmdi zmdi-shopping-cart-plus"></i> Adicionar ao Carrinho</a>
 								</div>
 								</div>
