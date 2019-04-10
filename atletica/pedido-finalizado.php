@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$_SESSION['carrinho'] = [];
 require_once('../admin/auto_load.php');
 
 $produto = new Produto;
@@ -31,128 +32,6 @@ $produtos = $produto->buscarTodos();
 		</head>
 
 		<body>
-			<!-- Modal confirmar pedido -->
-			<div class="modal modal-info" id="modal-confirmar-pedido" tabindex="-1" role="dialog" aria-labelledby="modal-confirmar-pedido-label">
-				<div class="modal-dialog animated zoomIn animated-3x" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title color-white" id="modal-confirmar-pedido-label">Confirmação</h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
-						</div>
-						<div class="modal-body" id="body-modal-confirmar-pedido">
-							<h4><b>Deseja finalizar o pedido e realizar a reserva dos produtos escolhidos?</b></h4>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-							<button type="button" class="btn  btn-primary"><a href="pedido-finalizado.php">Confirmar</a></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Fim modal -->
-			<a href="javascript:void(0)" id="btn_carrinho" class="ms-conf-btn ms-configurator-btn btn-circle btn-circle-raised btn-circle-primary animated rubberBand" style="right: 20px;"><i class="zmdi zmdi-shopping-cart"></i>
-			</a>
-			<div id="ms-configurator" class="ms-configurator" style="right: -310px;">
-				<div class="ms-configurator-title">
-					<h3><i class="zmdi zmdi-shopping-cart"></i> Carrinho de Compras</h3>
-					<a href="javascript:void(0);" class="ms-conf-btn withripple"><i class="zmdi zmdi-close"></i><div class="ripple-container"></div></a>
-				</div>
-				<div class="panel-group" id="accordion_conf" role="tablist" aria-multiselectable="true">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="ms-conf-header-color">
-							<h4 class="panel-title">
-								<a role="button" class="withripple" data-toggle="collapse" href="#ms-collapse-conf-1" aria-expanded="true" aria-controls="ms-collapse-conf-1">
-									<i class=""></i> Produtos </a>
-								</h4>
-							</div>
-							<div id="ms-collapse-conf-1" class="card-collapse collapse show" role="tabpanel" aria-labelledby="ms-conf-header-color" data-parent="#accordion_conf">
-								<div class="panel-body" style="height: 400px;overflow: auto;">
-									<div class=" row justify-content-end">
-										<div class="col-lg-12">
-											<select id="tipo_cliente" class="color-white form-control" onchange="setTipoCliente(this.value)" data-dropup-auto="true">
-												<option class="color-black" disabled="" selected>SELECIONE UMA OPÇÃO</option>
-												<option class="color-bordo" value="1">Sou sócio da Atlética </option>
-												<option class="color-bordo" value="0">Não sou sócio da Atlética </option>
-											</select>
-										</div>
-									</div>
-									
-									<div id="itens_carrinho">
-										
-									</div>
-									
-									<div id="grad-options" class="ms-color-shine total_compra">
-										<h4>Você ainda não adicionou produtos no carrinho.</h4>
-									</div>																	
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="panel-group" id="accordion_conf" role="tablist" aria-multiselectable="true">
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="ms-conf-header-color">
-								<h4 class="panel-title">
-									<a role="button" class="withripple" data-toggle="collapse" href="#ms-collapse-conf-2" aria-expanded="true" aria-controls="ms-collapse-conf-1">
-										<i class=""></i> Comprador </a>
-									</h4>
-								</div>
-								<div id="ms-collapse-conf-2" class="card-collapse collapse" role="tabpanel" aria-labelledby="ms-conf-header-color" data-parent="#accordion_conf">
-									<div class="panel-body">
-										<div id="grad-options" class="ms-color-shine">
-											<h4>Preencha com seus dados</h4>
-										</div>										
-										<div class="form-group">
-											<label>Seu Nome: </label>
-											<input  type="text" class="form-control color-white" id="input_nome_comprador" name="nome" >
-										</div>
-										<div class="form-group">
-											<label>Seu Email: </label>
-											<input type="text" class="form-control color-white" id="input_email_comprador" name="nome">
-										</div>										
-									</div>
-									
-								</div>
-							</div>
-						</div>
-						<div class="panel-group" id="accordion_conf" role="tablist" aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="ms-conf-header-color">
-									<h4 class="panel-title">
-										<a role="button" class="withripple" data-toggle="collapse" href="#ms-collapse-conf-3" aria-expanded="true" aria-controls="ms-collapse-conf-3">
-											<i class=""></i> Resumo </a>
-										</h4>
-									</div>
-									<div id="ms-collapse-conf-3" class="card-collapse collapse" role="tabpanel" aria-labelledby="ms-conf-header-color" data-parent="#accordion_conf">
-										<div class="panel-body" style="height: 400px;overflow: auto;">
-											<div id="body-resumo-comprador">
-												<div class="card container ">
-													<h4 class="color-bordo"><b>Seus Dados:</b></h4>
-													<p class="color-bordo">Nome: <span id="resumo_nome_comprador"></span></p>
-													<p class="color-bordo">Email: <span id="resumo_email_comprador"></span> </p>
-												</div>
-											</div>
-											<hr>
-											<div>
-												<div class="card container ">
-													<h4 class="color-bordo"><b>Produtos:</b></h4>
-													<div id="body-resumo-produtos">
-														<p class="color-bordo">Seu carrinho está vazio, que tal adicionar algumas coisas!?</p>
-													</div>	
-												</div>
-											</div>
-											<h4>Total do pedido: R$ <span id="resumo-total-pedido">00,00</span></h4>
-											<button class="btn btn-raised btn-bordo" id="btn-finalizar-pedido">Finalizar Pedido</button>		
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</div>
 			<div id="ms-preload" class="ms-preload">
 				<div id="status">
 					<div class="spinner">
@@ -348,123 +227,41 @@ $produtos = $produto->buscarTodos();
 					<a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a>
 				</div> <!-- container -->
 			</nav>
-			<div class="ms-hero-page ms-hero-img-city2 ms-hero-bg-info mb-6">
-				<div class="text-center color-white mt-6 mb-6 index-1">
-					<h1>Vitrine Online </h1>
-					<p class="lead lead-lg">Bem vindo a nossa vitrine online. Veja nossos produtos e aproveite para reservar o seu!
-						<br> Obtenha descontos sendo sócio da Atlética.
-					</p>
-					<a href="javascript:void(0)" class="btn btn-raised btn-white color-danger">
-					tornar-se Sócio</a>
-				</div>
-			</div>
 			<div class="container">
-				<div class="row">
-					<div class="col-lg-3">
-						<div class="card card-bordo">
-							<div class="card-header">
-								<h3 class="card-title">Filtro</h3>
+				<div class="row justify-content-center">
+					<div class="col-md-8 col-md-offset-2">
+						<h1 class="color-primary">Pedido realizado com sucesso!</h1>
+
+						<div class="card animated fadeInUp animation-delay-7 color-primary withripple">
+							<div class="card-body-big color-dark">
+								<div class="text-center">
+									<i class="fa fa-check-circle color-success" style="font-size: 80px"></i>
+									<!-- <h2>Dados para retirada dos produtos:</h2> -->
+									<p class="lead">Em breve você receberá um e-mail no endereço <b><?php echo $_SESSION['comprador']['email'] ?></b> com todos os detalhes do pedido.</p>
+									<p class="lead"><u class="color-danger">Obs:</u>O prazo de retirada dos produtos é de até 15 dias úteis.</p>
+									<a href="index.html" class="btn btn-primary btn-raised"><i class="zmdi zmdi-home"></i> Início</a>
+								</div>
 							</div>
-							<div class="card-body">
-								<form class="form-horizontal" id="Filters">
-									<h4 class="mb-1 no-mt">Vestimenta</h4>
-									<fieldset>
-										<div class="form-group no-mt">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" value=".calca"> Calça 
-												</label>
-											</div>
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" value=".bermuda"> Bermuda 
-												</label>
-											</div>
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" value=".casaco"> Casaco 
-												</label>
-											</div>
-										</div>
-									</fieldset>
-									<fieldset>
-										<h4 class="mb-1">Outros</h4>
-										<div class="form-group no-mt">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" value=".caneca"> Caneca 
-												</label>
-											</div>
-										</div>
-									</fieldset>
-									<button class="btn btn-danger btn-block no-mb mt-2" id="Reset"><i class="zmdi zmdi-delete"></i> Limpar
-									Filtros</button>
-								</form>
-								<form class="form-horizontal">
-									<h4>Ordenar por</h4>
-									<div class="form-group">
-										<select id="SortSelect" class="form-control selectpicker" data-dropup-auto="false">
-											<option value="random">Populares</option>
-											<option value="price:asc">Maior preço</option>
-											<option value="price:desc">Menor preço</option>
-										</select>
-									</div>
-								</form>
-							</div>
+							<div class="ripple-container"></div></div>
 						</div>
+
 					</div>
-					<div class="col-lg-9">
-						<div class="row" id="Container">
+				</div> <!-- container -->
 
-							<?php
-							foreach ($produtos as $index => $produto) {
-								echo '
-								<div class="col-xl-4 col-md-6 mix bermuda apple" data-price="999.99" data-date="20160705">
-								<div class="card ms-feature">
-								<div class="card-body overflow-hidden text-center">
-								<a href="loja-item.php"><img src="../admin/dist/img/loja/produtos/' . $produto['foto'] . '" alt=""
-								class="img-fluid center-block"></a>
-								<h4 class="text-normal text-center">' . $produto['nome'] . '</h4>
-								<p>Quibusdam aperiam tempora ut blanditiis cumque ab pariatur.</p>
-								<div>
-								<h2 class="d-inline">
-								<b>R$ ' . $produto['valor_socios'] . '</b>
-								</h2>
-								<div class="d-inline">
-								<h4 class="color-bordo-inverse d-inline"><b>Sócio</b></h4></div>
-								</div>
-								<p>
-								R$ ' . $produto['valor'] . ' para não sócios
-								</p>
-								<a href="javascript:void(0)" onclick="add_carrinho('.$produto['id'].')" class="ms-conf-btn animated rubberBand btn btn-bordo btn-sm btn-block btn-raised"><i
-								class="zmdi zmdi-shopping-cart-plus"></i> Adicionar ao Carrinho</a>
-								</div>
-								</div>
-								</div>
-								';
-							}
-							?>
-
-						</div>
+				<footer class="ms-footer">
+					<div class="container">
+						<p>Copyright &copy; Material Style 2017</p>
 					</div>
-
+				</footer>
+				<div class="btn-back-top">
+					<a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
 				</div>
-			</div> <!-- container -->
+			</div> <!-- sb-site-container -->
 
-			<footer class="ms-footer">
-				<div class="container">
-					<p>Copyright &copy; Material Style 2017</p>
-				</div>
-			</footer>
-			<div class="btn-back-top">
-				<a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
-			</div>
-		</div> <!-- sb-site-container -->
+			<script src="../assets/js/plugins.min.js"></script>
+			<script src="../assets/js/app.min.js"></script>
+			<script src="../assets/js/ecommerce.js"></script>
+			<script src="../assets/js/loja.js"></script>
+		</body>
 
-		<script src="../assets/js/plugins.min.js"></script>
-		<script src="../assets/js/app.min.js"></script>
-		<script src="../assets/js/ecommerce.js"></script>
-		<script src="../assets/js/loja.js"></script>
-	</body>
-
-	</html>
+		</html>
