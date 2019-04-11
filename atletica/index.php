@@ -1,3 +1,13 @@
+<?php
+
+require_once("../admin/auto_load.php");
+
+$ultimas_fotos = new UltimasFotos;
+
+$todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -506,96 +516,28 @@
 			<div class="container">
 				<h1 class="right-line">Últimas Fotos</h1>
 				<div class="row">
-					<div class="col-xl-4 col-md-6 mb-4">
-						<div class="ms-thumbnail-container wow fadeInUp">
+
+					<?php
+					foreach ($todas_ultimas_fotos as $value) {
+					
+					echo '
+					<div class="col-xl-4 col-md-6 mb-4" >
+						<div class="ms-thumbnail-container wow fadeInUp" style="height:200px">
 							<figure class="ms-thumbnail">
-								<img src="../assets/img/fotos/foto-1.jpeg" alt="" class="img-fluid">
+								<img style="height:190px"  src="../admin/dist/img/atletica/ultimas_fotos/'.$value['foto'].'" alt="" class="img-fluid">
 								<figcaption class="ms-thumbnail-caption text-center">
 									<div class="ms-thumbnail-caption-content">
-										<h3 class="ms-thumbnail-caption-title">Lorem ipsum dolor sit</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+										<h3 class="ms-thumbnail-caption-title">'.$value['titulo'].'</h3>
+										<p>'.$value['descricao'].'</p>
 										<a href="javascript:void(0)" class="btn btn-white btn-raised color-bordo"><i
 												class="zmdi zmdi-eye"></i> Ver Mais</a>
 									</div>
 								</figcaption>
 							</figure>
 						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 mb-4">
-						<div class="ms-thumbnail-container wow fadeInUp">
-							<figure class="ms-thumbnail">
-								<img src="../assets/img/fotos/foto-10.jpeg" alt="" class="img-fluid">
-								<figcaption class="ms-thumbnail-caption text-center">
-									<div class="ms-thumbnail-caption-content">
-										<h3 class="ms-thumbnail-caption-title">Lorem ipsum dolor sit</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-										<a href="javascript:void(0)" class="btn btn-white btn-raised color-bordo"><i
-												class="zmdi zmdi-eye"></i> Ver mais</a>
-									</div>
-								</figcaption>
-							</figure>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 mb-4">
-						<div class="ms-thumbnail-container wow fadeInUp">
-							<figure class="ms-thumbnail">
-								<img src="../assets/img/fotos/foto-11.jpeg" alt="" class="img-fluid">
-								<figcaption class="ms-thumbnail-caption text-center">
-									<div class="ms-thumbnail-caption-content">
-										<h3 class="ms-thumbnail-caption-title">Lorem ipsum dolor sit</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-										<a href="javascript:void(0)" class="btn btn-white btn-raised color-bordo"><i
-												class="zmdi zmdi-eye"></i> Ver Mais</a>
-									</div>
-								</figcaption>
-							</figure>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 mb-4">
-						<div class="ms-thumbnail-container wow fadeInUp">
-							<figure class="ms-thumbnail">
-								<img src="../assets/img/fotos/foto-12.jpeg" alt="" class="img-fluid">
-								<figcaption class="ms-thumbnail-caption text-center">
-									<div class="ms-thumbnail-caption-content">
-										<h3 class="ms-thumbnail-caption-title">Lorem ipsum dolor sit</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-										<a href="javascript:void(0)" class="btn btn-white btn-raised color-bordo"><i
-												class="zmdi zmdi-eye"></i> Ver mais</a>
-									</div>
-								</figcaption>
-							</figure>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 mb-4">
-						<div class="ms-thumbnail-container wow fadeInUp">
-							<figure class="ms-thumbnail">
-								<img src="../assets/img/fotos/foto-15.jpeg" alt="" class="img-fluid">
-								<figcaption class="ms-thumbnail-caption text-center">
-									<div class="ms-thumbnail-caption-content">
-										<h3 class="ms-thumbnail-caption-title">Lorem ipsum dolor sit</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-										<a href="javascript:void(0)" class="btn btn-white btn-raised color-bordo"><i
-												class="zmdi zmdi-eye"></i> Ver mais</a>
-									</div>
-								</figcaption>
-							</figure>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 mb-4">
-						<div class="ms-thumbnail-container wow fadeInUp">
-							<figure class="ms-thumbnail">
-								<img src="../assets/img/fotos/foto-16.jpeg" alt="" class="img-fluid">
-								<figcaption class="ms-thumbnail-caption text-center">
-									<div class="ms-thumbnail-caption-content">
-										<h3 class="ms-thumbnail-caption-title">Lorem ipsum dolor sit</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-										<a href="javascript:void(0)" class="btn btn-white btn-raised color-bordo"><i
-												class="zmdi zmdi-eye"></i> Ver mais</a>
-									</div>
-								</figcaption>
-							</figure>
-						</div>
-					</div>
+					</div>';
+					}
+					?>
 				</div>
 			</div>
 		</section>

@@ -4983,3 +4983,428 @@ table.text-center th {
   }
 }
 
+
+.img-thumbnail {
+    border-radius: 0;
+    padding: 5px;
+    border-color: #e0e0e0;
+    margin-bottom: 20px;
+    margin-bottom: 2rem;
+}
+
+a.img-thumbnail {
+    border-radius: 0;
+    padding: 5px;
+    display: block;
+    color: #03a9f4;
+}
+
+a.img-thumbnail .thumbnail-container {
+    overflow: hidden;
+}
+
+a.img-thumbnail .thumbnail-container img {
+    transition: all ease .7s;
+}
+
+a.img-thumbnail .thumbnail-container img:hover {
+    transform: scale(1.1);
+}
+
+a.img-thumbnail:hover, a.img-thumbnail:focus {
+    border-color: #03a9f4;
+}
+
+.ms-thumbnail-container {
+    border: solid 1px #eee;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.ms-thumbnail {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.ms-thumbnail img {
+    position: relative;
+    z-index: 0;
+    transition: all ease 1s;
+    width: 100%
+}
+
+.ms-thumbnail .ms-thumbnail-caption {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: -100%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(120, 30, 32, .6);
+    padding: 0;
+    color: #fff;
+    transition: all ease .5s;
+    -webkit-backface-visibility: hidden;
+}
+
+.ms-thumbnail .ms-thumbnail-caption:before {
+    content: "";
+    display: block;
+    background-color: rgba(3, 3, 3, .6);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 200%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: all ease .5s;
+    -webkit-backface-visibility: hidden;
+}
+
+.ms-thumbnail .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-100%);
+    transition: all ease .6s;
+    -webkit-backface-visibility: hidden;
+    padding: 20px;
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    width: 100%
+}
+
+.ms-thumbnail .ms-thumbnail-caption .ms-thumbnail-caption-content .ms-thumbnail-caption-title {
+    margin: 0 0 10px;
+    margin: 0 0 1rem;
+}
+
+.ms-thumbnail:hover img, .ms-thumbnail:focus img {
+    transform: scale(1.1);
+}
+
+.ms-thumbnail:hover .ms-thumbnail-caption, .ms-thumbnail:focus .ms-thumbnail-caption {
+    top: 0;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+}
+
+.ms-thumbnail:hover .ms-thumbnail-caption:before, .ms-thumbnail:focus .ms-thumbnail-caption:before {
+    top: 0;
+}
+
+.ms-thumbnail:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-horizontal .ms-thumbnail-caption {
+    top: 0;
+    right: 100%;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-horizontal .ms-thumbnail-caption:before {
+    top: 0;
+    right: -200%;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-horizontal .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%) translateX(-100%);
+}
+
+.ms-thumbnail.ms-thumbnail-horizontal:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-horizontal:focus .ms-thumbnail-caption {
+    top: 0;
+    right: 0;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-horizontal:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-horizontal:focus .ms-thumbnail-caption:before {
+    top: 0;
+    right: 0;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-horizontal:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-horizontal:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-bottom .ms-thumbnail-caption {
+    top: 100%
+}
+
+.ms-thumbnail.ms-thumbnail-bottom .ms-thumbnail-caption:before {
+    top: 100%
+}
+
+.ms-thumbnail.ms-thumbnail-bottom .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(50%);
+}
+
+.ms-thumbnail.ms-thumbnail-bottom:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-bottom:focus .ms-thumbnail-caption {
+    top: 0;
+}
+
+.ms-thumbnail.ms-thumbnail-bottom:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-bottom:focus .ms-thumbnail-caption:before {
+    transition-delay: .25s;
+    top: 0;
+}
+
+.ms-thumbnail.ms-thumbnail-bottom:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-bottom:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-top .ms-thumbnail-caption {
+    bottom: 100%;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-top .ms-thumbnail-caption:before {
+    bottom: 100%;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-top .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-top:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-top:focus .ms-thumbnail-caption {
+    bottom: 0;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-top:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-top:focus .ms-thumbnail-caption:before {
+    transition-delay: .25s;
+    bottom: 0;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-top:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-top:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-right .ms-thumbnail-caption {
+    left: 100%;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-right .ms-thumbnail-caption:before {
+    left: 100%;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-right .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-right:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-right:focus .ms-thumbnail-caption {
+    left: 0;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-right:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-right:focus .ms-thumbnail-caption:before {
+    transition-delay: .25s;
+    left: 0;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-right:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-right:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-left .ms-thumbnail-caption {
+    right: 100%;
+    left: auto;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-left .ms-thumbnail-caption:before {
+    right: 100%;
+    left: auto;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-left .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-left:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-left:focus .ms-thumbnail-caption {
+    right: 0;
+    left: auto;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-left:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-left:focus .ms-thumbnail-caption:before {
+    transition-delay: .25s;
+    right: 0;
+    left: auto;
+    top: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-left:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-left:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-diagonal .ms-thumbnail-caption {
+    right: 100%;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-diagonal .ms-thumbnail-caption:before {
+    right: -200%;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-diagonal .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-diagonal:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-diagonal:focus .ms-thumbnail-caption {
+    right: 0;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-diagonal:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-diagonal:focus .ms-thumbnail-caption:before {
+    right: 0;
+    left: auto;
+}
+
+.ms-thumbnail.ms-thumbnail-diagonal:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-diagonal:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-center .ms-thumbnail-caption {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition-delay: .3s;
+}
+
+.ms-thumbnail.ms-thumbnail-center .ms-thumbnail-caption:before {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition-delay: .2s;
+}
+
+.ms-thumbnail.ms-thumbnail-center .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    transform: translateY(-50%);
+}
+
+.ms-thumbnail.ms-thumbnail-center:hover .ms-thumbnail-caption, .ms-thumbnail.ms-thumbnail-center:focus .ms-thumbnail-caption {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition-delay: 0s;
+}
+
+.ms-thumbnail.ms-thumbnail-center:hover .ms-thumbnail-caption:before, .ms-thumbnail.ms-thumbnail-center:focus .ms-thumbnail-caption:before {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+.ms-thumbnail.ms-thumbnail-center:hover .ms-thumbnail-caption .ms-thumbnail-caption-content, .ms-thumbnail.ms-thumbnail-center:focus .ms-thumbnail-caption .ms-thumbnail-caption-content {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    transition-delay: .5s;
+}
+
+.ms-thumbnail.ms-thumbnail-danger .ms-thumbnail-caption {
+    background-color: rgba(182, 27, 23, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-danger .ms-thumbnail-caption:before {
+    background-color: rgba(182, 27, 23, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-danger .ms-thumbnail-caption {
+    background-color: rgba(182, 27, 23, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-danger .ms-thumbnail-caption:before {
+    background-color: rgba(182, 27, 23, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-success .ms-thumbnail-caption {
+    background-color: rgba(44, 106, 47, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-success .ms-thumbnail-caption:before {
+    background-color: rgba(44, 106, 47, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-warning .ms-thumbnail-caption {
+    background-color: rgba(175, 97, 0, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-warning .ms-thumbnail-caption:before {
+    background-color: rgba(175, 97, 0, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-royal .ms-thumbnail-caption {
+    background-color: rgba(89, 23, 107, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-royal .ms-thumbnail-caption:before {
+    background-color: rgba(89, 23, 107, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-info .ms-thumbnail-caption {
+    background-color: rgba(120, 30, 32, .66);
+}
+
+.ms-thumbnail.ms-thumbnail-info .ms-thumbnail-caption:before {
+    background-color: rgba(3, 3, 3, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-dark .ms-thumbnail-caption {
+    background-color: rgba(28, 28, 28, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-dark .ms-thumbnail-caption:before {
+    background-color: rgba(28, 28, 28, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-light .ms-thumbnail-caption {
+    color: #424242;
+    background-color: rgba(255, 255, 255, .6);
+}
+
+.ms-thumbnail.ms-thumbnail-light .ms-thumbnail-caption:before {
+    background-color: rgba(255, 255, 255, .6);
+}
+
+
+.btn.btn-white {
+    color: #fff;
+}
+
+.btn.btn-white:hover, .btn.btn-white:focus, .btn.btn-white:active {
+    background-color: rgba(0, 0, 0, .2)!important;
+}
+
+.btn.btn-white.btn-raised {
+    color: #781E20;
+    background-color: #fff;
+}
+
+.btn.btn-white.btn-raised:hover, .btn.btn-white.btn-raised:focus, .btn.btn-white.btn-raised:active {
+    background-color: #fff!important;
+}
+
