@@ -422,7 +422,7 @@ $produtos = $produto->buscarTodos();
 								<div class="col-xl-4 col-md-6 mix bermuda apple" data-price="999.99" data-date="20160705">
 								<div class="card ms-feature">
 								<div class="card-body overflow-hidden text-center">
-								<a href="loja-item.php"><img src="../admin/dist/img/loja/produtos/' . $produto['foto'] . '" alt=""
+								<a href="loja-item.php?i='.$produto['id'].'"><img src="../admin/dist/img/loja/produtos/' . $produto['foto'] . '" alt=""
 								class="img-fluid center-block"></a>
 								<h4 class="text-normal text-center">' . $produto['nome'] . '</h4>
 								<p>Quibusdam aperiam tempora ut blanditiis cumque ab pariatur.</p>

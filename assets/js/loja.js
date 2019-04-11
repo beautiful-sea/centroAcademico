@@ -11,7 +11,16 @@ function add_carrinho(id_produto){//Adiciona os itens na sessao
 		}
 	});
 }
-
+function remover_carrinho(id_produto){//Adiciona os itens na sessao 
+	$.ajax({
+		url:'../admin/controller/loja/carrinho.php',
+		method:"POST",
+		data:{id_p:id_produto,remover:1},
+		success:function(data){
+			atualiza_carrinho_html(data);
+		}
+	});
+}
 function getComprador(){
 	$.ajax({
 		url:'../admin/controller/loja/carrinho.php',
@@ -60,7 +69,8 @@ function atualiza_carrinho_html(itens){//Atualiza os itens no html
 			<label>Quantidade:</label>\
 			<input type="number" id="input_qntd_produto" min="0" max="10" style="margin-top: 0px!important" class=" form-control-number pull-right" onchange="atualiza_quantidade_produto('+(valor.id)+',this.value)" pattern="[0-9]*"  value="'+valor.qntd+'">\
 			</div>\
-			<p class="color-bordo text-right">Valor: R$ '+valor_unitario+',00</p>\
+			<div class="row d-inline"><span onclick="remover_carrinho('+valor.id+')" class="color-bordo" style="cursor:pointer;padding-left:10px">Remover</span>\
+			<span class="color-bordo" style="float:right;padding-right:10px">Valor: R$ '+valor_unitario+',00</span></div>\
 			</div>\
 			');
 	});

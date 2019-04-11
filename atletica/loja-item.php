@@ -2,6 +2,23 @@
 session_start();
 
 
+require_once('../admin/auto_load.php');
+$p = new Produto;
+
+if(isset($_GET['i'])){
+	$id_produto = $_GET['i'];
+	$produto = $p->buscarPorID($id_produto);
+	if($produto){
+		$todos_produtos = $p->buscarTodos();
+	}else{
+		header("Location: loja.php");
+		
+	}
+
+}else{
+	header("Location: loja.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -327,8 +344,8 @@ session_start();
 								<!-- Wrapper for slides -->
 								<div class="carousel-inner" role="listbox">
 									<div class="carousel-item active">
-										<img src="../assets/img/demo/products/1.jpg" alt="...">
-									</div>
+										<img src='../admin/dist/img/loja/produtos/<?php echo $produto["foto"]?> ' alt="...">
+									</div><!-- 
 									<div class="carousel-item">
 										<img src="../assets/img/demo/products/2.jpg" alt="...">
 									</div>
@@ -340,14 +357,14 @@ session_start();
 									</div>
 									<div class="carousel-item">
 										<img src="../assets/img/demo/products/5.jpg" alt="...">
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<!-- Indicators -->
 							<ol class="carousel-indicators carousel-indicators-tumbs carousel-indicators-tumbs-outside">
 								<li data-target="#carousel-product" data-slide-to="0" class="active">
-									<img src="../assets/img/demo/products/m1.png" alt="">
-								</li>
+									<img width="80px" src='../admin/dist/img/loja/produtos/<?php echo $produto["foto"]?> ' alt="...">
+								</li><!-- 
 								<li data-target="#carousel-product" data-slide-to="1">
 									<img src="../assets/img/demo/products/m2.png" alt="">
 								</li>
@@ -359,134 +376,79 @@ session_start();
 								</li>
 								<li data-target="#carousel-product" data-slide-to="4">
 									<img src="../assets/img/demo/products/m5.png" alt="">
-								</li>
+								</li> -->
 							</ol>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="card animated zoomInDown animation-delay-5">
 							<div class="card-body">
-								<h2>Macbook Pro 2016 13" with Touch Bar</h2>
+								<h2><?php echo $produto['nome']; ?></h2>
 								<div class="mb-2 mt-4">
 									<div class="row">
-										<div class="col-sm-6">
-											<span class="mr-2">
-												<i class="zmdi zmdi-hc-lg zmdi-star color-warning"></i>
-												<i class="zmdi zmdi-hc-lg zmdi-star color-warning"></i>
-												<i class="zmdi zmdi-hc-lg zmdi-star color-warning"></i>
-												<i class="zmdi zmdi-hc-lg zmdi-star color-warning"></i>
-												<i class="zmdi zmdi-hc-lg zmdi-star"></i>
-											</span>
-										</div>
-										<div class="col-sm-6 text-center">
-											<h2 class="color-success no-m text-normal">$ 1999.99</h2>
+										<div class="col-sm-6 offset-3 text-center">
+											<h2 class="color-success no-m text-normal d-inline">R$ <?php echo $produto['valor_socios'];?>,00</h2>
+											<h4 class="color-bordo-inverse d-inline" style="padding: 2px;border-radius: 10px;"><b>Sócio</b></h4>
 										</div>
 									</div>
 								</div>
-								<p class="lead">Dolorum culpa temporibus illum ab esse est, eligendi fugit veniam excepturi modi minus,
-								atque ipsam magni incidunt sed, quia hic dolore quos.</p>
+								<p class="lead">
+									<?php echo $produto['descricao'];?>
+								</p>
 								<ul class="list-unstyled">
-									<li><strong>Brand: </strong>Appple</li>
-									<li><strong>Number of items: </strong>
-										<div class="form form-inline input-number">
-											<button class="btn-circle btn-circle-primary btn-circle-xs" type="button"><i
-												class="fa fa-minus"></i></button>
-												<input type="text" class="form-control form-control-number" pattern="[0-9]*" value="1">
-												<button class="btn-circle btn-circle-primary btn-circle-xs" type="button"><i
-													class="fa fa-plus"></i></button>
-												</div>
+									<li><strong>Categoria: </strong>Roupas</li>
+											<li class="mb-2"><strong>Disponibilidade: </strong> <span class="ms-tag ms-tag-success">Em estoque</span>
 											</li>
-											<li class="mb-2"><strong>Availability: </strong> <span class="ms-tag ms-tag-success">in stock</span>
-											</li>
-											<li><strong>Shipping costs: </strong> <span class="color-warning">$5.25</span></li>
+											<li><strong>Valor para não Sócios: </strong> <span class="color-warning">R$ <?php echo $produto['valor'];?>,00</span></li>
 										</ul>
-										<a href="javascript:void(0)" class="btn btn-primary btn-block btn-raised mt-2 no-mb"><i
-											class="zmdi zmdi-shopping-cart-plus"></i> Add to Cart</a>
+										<a href="javascript:void(0)" class="btn btn-primary btn-block btn-raised mt-2 no-mb" onclick="add_carrinho(<?php echo $produto['id'];?>)"><i
+											class="zmdi zmdi-shopping-cart-plus" ></i>Adicionar ao Carrinho</a>
 										</div>
 									</div>
 
 								</div>
 							</div>
-							<h2 class="mt-4 mb-4 right-line">Related Products</h2>
+							<h2 class="mt-4 mb-4 right-line">Outros Produtos</h2>
 							<div class="row">
-								<div class="col-md-4">
-									<div class="card ms-feature wow zoomInUp animation-delay-3">
-										<div class="card-body overflow-hidden text-center">
-											<a href="javascript:void(0)"><img src="../assets/img/demo/products/surfaceBook.png" alt=""
-												class="img-fluid center-block"></a>
-												<h4 class="text-normal text-center">Microsoft Surface Book</h4>
-												<p>Quibusdam aperiam tempora ut blanditiis cumque ab pariatur.</p>
-												<div class="mt-2">
-													<span class="mr-2">
-														<i class="zmdi zmdi-star color-warning"></i>
-														<i class="zmdi zmdi-star color-warning"></i>
-														<i class="zmdi zmdi-star color-warning"></i>
-														<i class="zmdi zmdi-star color-warning"></i>
-														<i class="zmdi zmdi-star"></i>
-													</span>
-													<span class="ms-tag ms-tag-success">$ 2499.25</span>
-												</div>
-												<a href="javascript:void(0)" class="btn btn-primary btn-sm btn-block btn-raised mt-2 no-mb"><i
-													class="zmdi zmdi-shopping-cart-plus"></i> Add to Cart</a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="card ms-feature wow zoomInUp animation-delay-5">
-												<div class="card-body overflow-hidden text-center">
-													<a href="javascript:void(0)"><img src="../assets/img/demo/products/ipad.png" alt=""
-														class="img-fluid center-block"></a>
-														<h4 class="text-normal text-center">iPad Pro</h4>
-														<p>Quibusdam aperiam tempora ut blanditiis cumque ab pariatur.</p>
-														<div class="mt-2">
-															<span class="mr-2">
-																<i class="zmdi zmdi-star color-warning"></i>
-																<i class="zmdi zmdi-star color-warning"></i>
-																<i class="zmdi zmdi-star color-warning"></i>
-																<i class="zmdi zmdi-star color-warning"></i>
-																<i class="zmdi zmdi-star color-warning"></i>
-															</span>
-															<span class="ms-tag ms-tag-success">$ 999.99</span>
-														</div>
-														<a href="javascript:void(0)" class="btn btn-primary btn-sm btn-block btn-raised mt-2 no-mb"><i
-															class="zmdi zmdi-shopping-cart-plus"></i> Add to Cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="card ms-feature wow zoomInUp animation-delay-7">
-														<div class="card-body overflow-hidden text-center">
-															<a href="javascript:void(0)"><img src="../assets/img/demo/products/galaxyTab.png" alt=""
-																class="img-fluid center-block"></a>
-																<h4 class="text-normal text-center">Galaxy Tab S2</h4>
-																<p>Quibusdam aperiam tempora ut blanditiis cumque ab pariatur.</p>
-																<div class="mt-2">
-																	<span class="mr-2">
-																		<i class="zmdi zmdi-star color-warning"></i>
-																		<i class="zmdi zmdi-star color-warning"></i>
-																		<i class="zmdi zmdi-star color-warning"></i>
-																		<i class="zmdi zmdi-star color-warning"></i>
-																		<i class="zmdi zmdi-star"></i>
-																	</span>
-																	<span class="ms-tag ms-tag-success">$ 538.99</span>
-																</div>
-																<a href="javascript:void(0)" class="btn btn-primary btn-sm btn-block btn-raised mt-2 no-mb"><i
-																	class="zmdi zmdi-shopping-cart-plus"></i> Add to Cart</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div> <!-- container -->
+								<?php 
+								for ($i=0; $i <3 ; $i++) { 
 
-												<footer class="ms-footer">
-													<div class="container">
-														<p>Copyright &copy; Material Style 2017</p>
-													</div>
-												</footer>
+									echo '
+									<div class="col-md-4">
+									<div class="card ms-feature">
+									<div class="card-body overflow-hidden text-center">
+									<a href="loja-item.php?i='.$todos_produtos[$i]['id'].'"><img src="../admin/dist/img/loja/produtos/' . $todos_produtos[$i]['foto'] . '" alt=""
+									class="img-fluid center-block"></a>
+									<h4 class="text-normal text-center">' . $todos_produtos[$i]['nome'] . '</h4>
+									<p>Quibusdam aperiam tempora ut blanditiis cumque ab pariatur.</p>
+									<div>
+									<h2 class="d-inline">
+									<b>R$ ' . $todos_produtos[$i]['valor_socios'] . '</b>
+									</h2>
+									<div class="d-inline">
+									<h4 class="color-bordo-inverse d-inline" style="padding: 2px;border-radius: 10px;"><b>Sócio</b></h4></div>
+									</div>
+									<p>
+									R$ ' . $todos_produtos[$i]['valor'] . ' para não sócios
+									</p>
+									<a href="javascript:void(0)" onclick="add_carrinho('.$todos_produtos[$i]['id'].')" class="ms-conf-btn animated rubberBand btn btn-bordo btn-sm btn-block btn-raised"><i
+									class="zmdi zmdi-shopping-cart-plus"></i> Adicionar ao Carrinho</a>
+									</div>
+									</div>
+									</div>
+									'; 
+								}?>
+							</div>	
+						</div><!-- container -->
+						<footer class="ms-footer">
+							<div class="container">
+								<p>Copyright &copy; Material Style 2017</p>
+							</div>
+						</footer>
 
-												<script src="../assets/js/plugins.min.js"></script>
-												<script src="../assets/js/app.min.js"></script>
-												<script src="../assets/js/loja.js"></script>
-											</body>
+						<script src="../assets/js/plugins.min.js"></script>
+						<script src="../assets/js/app.min.js"></script>
+						<script src="../assets/js/loja.js"></script>
+					</body>
 
-											</html>
+					</html>

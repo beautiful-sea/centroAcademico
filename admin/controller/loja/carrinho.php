@@ -16,20 +16,30 @@ if(isset($_POST['id']) && !isset($_POST['qntd_produto'])){
 		$_SESSION['carrinho'][$produto['id']]['qntd'] = 1; //Inicia quantidade de produtos com 1;
 	}
 	echo json_encode($_SESSION['carrinho']);
-}elseif(isset($_POST['qntd_produto'])){
+}
+elseif(isset($_POST['qntd_produto'])){
 	$_SESSION['carrinho'][$_POST['id']]['qntd'] = $_POST['qntd_produto']; //Inicia quantidade de produtos com 1;
 	echo json_encode($_SESSION['carrinho']);
-}elseif(!isset($_POST)){
-	echo json_encode($_SESSION['comprador']);
-}elseif(isset($_POST['nome'])){
+}
+elseif((isset($_POST['remover']) == 1)){
+	unset($_SESSION['carrinho'][$_POST['id_p']]);
+	echo json_encode($_SESSION['carrinho']);
+}
+elseif(!isset($_POST)){
+	echo json_encode($_SESSION['carrinho']);
+}
+elseif(isset($_POST['nome'])){
 	$_SESSION['comprador']['nome'] = $_POST['nome'];
 	echo json_encode($_SESSION['comprador']);
-}elseif(isset($_POST['email'])){
+}
+elseif(isset($_POST['email'])){
 	$_SESSION['comprador']['email'] = $_POST['email'];
 	echo json_encode($_SESSION['comprador']);
-}elseif(isset($_POST['getComprador']) == 1){
+}
+elseif(isset($_POST['getComprador']) == 1){
 	echo json_encode($_SESSION['comprador']);
-}elseif(isset($_POST['tipo_cliente'])){
+}
+elseif(isset($_POST['tipo_cliente'])){
 	if($_POST['tipo_cliente'] == 1){
 		$_SESSION['comprador']['tipo_cliente'] = 1;
 	}else{
