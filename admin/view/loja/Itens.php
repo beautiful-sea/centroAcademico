@@ -102,7 +102,6 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 </style>
 </head>
 <body class="hold-transition skin-bordo sidebar-mini fixed">
-	
 	<!-- Modal Editar -->
 	<div class="modal fade" id="modal-editar">
 		<div class="modal-dialog">
@@ -477,42 +476,25 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					</a>
 					<ul class="treeview-menu">
 						<li><a href="../loja/produtos.php"><i class="fa fa-circle"></i> Produtos</a></li>
+						<li><a href="../loja/Itens.php"><i class="far fa-circle"></i> Itens de Estoque</a></li>
+					</ul>
+					<ul class="treeview-menu">
+						
 
 					</ul>
 				</li>
 				<li class="treeview">
 					<a href="#">
-					<i class="fa fa-pager"></i> <span>Gerenciar Conteúdo</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li class="treeview">
-						<a href="#"><i class="far fa-circle"></i> Atlética
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu" style="display: none;">
-							<li><a href="view/conteudo/atletica/ultimas-fotos.php"><i class="far fa-images"></i> Últimas Fotos</a></li>
-							<li><a href="#"><i class="fa fa-columns"></i> Notícias</a></li>
-						</ul>
-					</li>
+						<i class="fa fa-cog"></i> <span>Configurações</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="index.html"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+						<li><a href="index.html"><i class="fa fa-circle-o"></i> Editar</a></li>
 
-					<li class="treeview">
-						<a href="#"><i class="far fa-circle"></i> Centro Acadêmico
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu" style="display: none;">
-							<li><a href="#"><i class="far fa-circle-o"></i> Últimas Fotos</a></li>
-							<li><a href="#"><i class="far fa-circle-o"></i> Notícias</a></li>
-							
-						</ul>
-					</li>
-				</ul>
+					</ul>
 				</li>
 
 			</ul>
