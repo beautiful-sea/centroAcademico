@@ -46,4 +46,6 @@ elseif(isset($_POST['tipo_cliente'])){
 		$_SESSION['comprador']['tipo_cliente'] = 0;
 	}
 	echo json_encode($_SESSION['carrinho']);
+}else{
+	echo json_encode($_SESSION['carrinho']);
 }

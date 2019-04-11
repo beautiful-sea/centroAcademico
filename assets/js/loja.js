@@ -1,5 +1,8 @@
 tipo_cliente = null;
 comprador = [];
+
+getCarrinho();
+
 function add_carrinho(id_produto){//Adiciona os itens na sessao 
 	event.preventDefault();
 	$.ajax({
@@ -31,7 +34,12 @@ function getComprador(){
 		}
 	})
 }
-
+function getCarrinho(){
+	$.get("../admin/controller/loja/carrinho.php",function(data){
+		carrinho = JSON.parse(data);
+		atualiza_carrinho_html(data);
+	})
+}
 function setTipoCliente(value){//Atualiza o carrinho de acordo com o tipo de cliente
 	this.tipo_cliente = value;
 	$.ajax({
