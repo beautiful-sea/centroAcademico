@@ -71,6 +71,7 @@ function atualiza_carrinho_html(itens){//Atualiza os itens no html
 		<h4 class="d-inline">Total da compra: R$</h4> <h3 class="d-inline">'+valor_total+',00</h3><br>\
 		');	
 	atualiza_resumo_pedido(carrinho,valor_total);
+
 }
 
 function atualiza_quantidade_produto(id_produto,qntd){
@@ -127,3 +128,4 @@ $("#btn-finalizar-pedido").click(function(){//Mostra modal de confirmação de p
 	});
 	$("#modal-confirmar-pedido").modal('show');
 });
+
