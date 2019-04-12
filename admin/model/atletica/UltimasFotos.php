@@ -95,6 +95,37 @@ class UltimasFotos{
 		return $stmt->execute();	
 	}
 
+	public function alterar($antiga,$nova){
+		try{
+			$sql = "UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id";
+			$stmt = Conexao::getInstancia()->prepare($sql);
+
+			$stmt->bindValue(":titulo",$antiga['titulo']);
+			$stmt->bindValue(":descricao",$antiga['descricao']);
+			$stmt->bindValue(":data_evento",$antiga['data_evento']);
+			$stmt->bindValue(":foto",$antiga['foto']);
+			$stmt->bindValue(":id",$nova['id']);
+
+			$stmt->execute();
+
+			///////////////////////////////////////////
+
+			$sql = "UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id";
+			$stmt = Conexao::getInstancia()->prepare($sql);
+			$stmt->bindValue(":titulo",$nova['titulo']);
+			$stmt->bindValue(":descricao",$nova['descricao']);
+			$stmt->bindValue(":data_evento",$nova['data_evento']);
+			$stmt->bindValue(":foto",$nova['foto']);
+			$stmt->bindValue(":id",$antiga['id']);
+
+			return $stmt->execute();
+
+		}catch(Exception $e){
+			echo "Erro ao acessar Banco de dados<br>";
+			return $e->getMessage();
+		}
+	}
+
 	public function salvarImagem($imagem){
 
 		// verifica se foi enviado um arquivo
@@ -164,11 +195,11 @@ class UltimasFotos{
 	// 	}
 	// }
 
-	public function buscarTodas($opcoes = 'DESC LIMIT 6'){
+	public function buscarTodas($opcoes = 'ORDER BY dt_cadastro DESC LIMIT 6'){
 
 		try{
 
-			$sql = "SELECT * FROM fotos_atletica ORDER BY dt_cadastro $opcoes";
+			$sql = "SELECT * FROM fotos_atletica $opcoes";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 

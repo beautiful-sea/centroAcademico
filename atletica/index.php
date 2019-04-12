@@ -44,7 +44,7 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 								<figcaption class="ms-thumbnail-caption text-center">
 									<div class="ms-thumbnail-caption-content">
 										<h3 class="ms-thumbnail-caption-title" id="modal-ultimas-fotos-descricao">...</h3>
-										<span class="date" id="modal-ultimas-fotos-data"></span>
+										<span class="" id="modal-ultimas-fotos-data"></span>
 									</div>
 								</figcaption>
 							</figure>

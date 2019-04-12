@@ -495,7 +495,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 							</span>
 						</a>
 						<ul class="treeview-menu" style="display: none;">
-							<li><a href="view/conteudo/atletica/ultimas-fotos.php"><i class="far fa-images"></i> Últimas Fotos</a></li>
+							<li><a href="../conteudo/atletica/ultimas-fotos.php"><i class="far fa-images"></i> Últimas Fotos</a></li>
 							<li><a href="#"><i class="fa fa-columns"></i> Notícias</a></li>
 						</ul>
 					</li>
