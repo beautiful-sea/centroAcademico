@@ -482,16 +482,37 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 				</li>
 				<li class="treeview">
 					<a href="#">
-						<i class="fa fa-cog"></i> <span>Configurações</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li><a href="index.html"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
-						<li><a href="index.html"><i class="fa fa-circle-o"></i> Editar</a></li>
+					<i class="fa fa-pager"></i> <span>Gerenciar Conteúdo</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li class="treeview">
+						<a href="#"><i class="far fa-circle"></i> Atlética
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu" style="display: none;">
+							<li><a href="view/conteudo/atletica/ultimas-fotos.php"><i class="far fa-images"></i> Últimas Fotos</a></li>
+							<li><a href="#"><i class="fa fa-columns"></i> Notícias</a></li>
+						</ul>
+					</li>
 
-					</ul>
+					<li class="treeview">
+						<a href="#"><i class="far fa-circle"></i> Centro Acadêmico
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu" style="display: none;">
+							<li><a href="#"><i class="far fa-circle-o"></i> Últimas Fotos</a></li>
+							<li><a href="#"><i class="far fa-circle-o"></i> Notícias</a></li>
+							
+						</ul>
+					</li>
+				</ul>
 				</li>
 
 			</ul>
