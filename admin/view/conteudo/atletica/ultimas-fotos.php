@@ -76,11 +76,13 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									<input type="hidden" name="id" id="id">
 									<div class="form-group">
 										<label for="editar_titulo">Título</label>
-										<input type="text" name="titulo" class="form-control" id="editar_titulo" placeholder="Digite o Título">
+										<input type="text" name="titulo" class="form-control" id="editar_titulo" maxlength="50" placeholder="Digite o Título">
+										<small>Máximo: 50 caracteres</small>
 									</div>
 									<div class="form-group">
 										<label for="editar_descricao">Descrição</label>
-										<input type="text" name="descricao" class="form-control" id="editar_descricao" placeholder="Digite a Descrição">
+										<input type="text" name="descricao" class="form-control" id="editar_descricao" maxlength="250" placeholder="Digite a Descrição">
+										<small>Máximo: 250 caracteres</small>
 									</div>
 									<div class="form-group">
 										<label for="editar_data">Data</label>
@@ -89,6 +91,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									<div class="form-group">
 										<label for="cadastro_senha">Foto</label>
 										<input type="file" name="foto" class="form-control" id="cadastro_foto">
+										<small>Tamanho Máximo: 5Mb</small><br>
+										<small>Formatos: .jpg;.jpeg;.gif;.png</small>
 									</div>
 
 								</div>
@@ -455,6 +459,14 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<?php 
 					foreach ($todas as $value) {
 
+						$encurta_descricao = substr($value['descricao'], 0,50);
+						//Se o tamanho da descricao original for menor do que ela encurtada
+						if(strlen($value['descricao'])<=strlen($encurta_descricao)){
+							$descricao = $value['descricao'];
+						}else{
+							$descricao = $encurta_descricao.'...';
+						}
+
 						echo '
 						<div class="col-xl-4 col-md-4 mb-4" style="height:200px">
 						<div class="ms-thumbnail-container wow fadeInUp">
@@ -463,7 +475,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<figcaption class="ms-thumbnail-caption text-center">
 						<div class="ms-thumbnail-caption-content">
 						<h3 class="ms-thumbnail-caption-title">'.$value["titulo"].'</h3>
-						<p>'.$value["descricao"].'</p>
+						<p>'.$descricao.'</p>
 						<a href="javascript:editar('.$value["id"].')" class="btn btn-white btn-raised color-bordo"><i
 						class="fa fa-edit"></i> Editar
 						</a>
