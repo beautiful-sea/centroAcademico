@@ -580,20 +580,22 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 offset-4">
 						<div class="price-table price-table-danger wow zoomInUp">
 							<header class="price-table-header">
-								<span class="price-table-category">Business</span>
-								<h3><sup>$</sup>99 <sub>/mo.</sub></h3>
+								<span class="price-table-category">SÓCIO</span>
+								<h3><sup>$</sup>6,70<sub>/mês.</sub></h3>
 							</header>
 							<div class="price-table-body">
-								<ul class="price-table-list">
-									<li><i class="zmdi zmdi-code"></i> Lorem ipsum dolor sit amet.</li>
-									<li><i class="zmdi zmdi-globe"></i> Voluptate ex quam autem. Dolor.</li>
-									<li><i class="zmdi zmdi-settings"></i> Dignissimos velit reiciendis.</li>
-									<li><i class="zmdi zmdi-cloud"></i> Nihil corrupti soluta vitae non.</li>
-									<li><i class="zmdi zmdi-star"></i> Atque molestiae, blanditiis ratione.</li>
-								</ul>
+								<p class="price-table-list">
+									Clube de vantagens em todo Brasil
+									Estabelecimentos parceiros exclusivos
+									Descontos em todos os produtos da Atlética
+									Benefícios na compra de produtos
+									Descontos em todas as festas da Atlética
+									Descontos nos campeonatos esportivos da Atlética
+									Vantagens dentro dos eventos da Atlética
+								</p>
 								<div class="text-center">
-									<a href="javascript:void(0)" class="btn btn-danger btn-raised"><i
-										class="zmdi zmdi-cloud-download"></i> Get Now</a>
+									<a href="https://www.forsocios.com/engvassouras#main" class="btn btn-danger btn-raised"><i
+										class="glyphicon glyphicon-euro"></i>Eu quero!</a>
 									</div>
 								</div>
 							</div>
