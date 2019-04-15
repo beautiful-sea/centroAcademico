@@ -533,11 +533,11 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 								<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
 									<ul class="pagination">
 									<li class="paginate_button">
-										<a href="#" id="pagina1" onclick="paginacao(1)" tabindex="0">1
+										<a href="javascript:void(0)" id="pagina1" onclick="paginacao(1)" tabindex="0">1
 										</a>
 									</li>
 									<li class="paginate_button ">
-										<a href="#" id="pagina2" onclick="paginacao(2)" tabindex="0">2
+										<a href="javascript:void(0)" id="pagina2" onclick="paginacao(2)" tabindex="0">2
 										</a>
 									</li>
 								</div>
