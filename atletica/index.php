@@ -391,7 +391,7 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="fa fa-wordpress"></i></span>
+								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-baseball-ball"></i></span>
 							</div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Handebol</h4>
@@ -402,7 +402,7 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-baseball-ball"></i></span>
+								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-volleyball-ball"></i></span>
 							</div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Vôlei</h4>
