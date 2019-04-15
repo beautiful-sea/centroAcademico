@@ -60,20 +60,20 @@ if(!isset($_SESSION['usuario'])){
 href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <style type="text/css">
-input[type="radio"] {
-        display: none;
-}
-    
-label {
-    display: block;
-    width: 100%;
-    float: left;
-    cursor: pointer;
-}
+	input[type="radio"] {
+		display: none;
+	}
 
-input[type="radio"]:checked+label {
-    border: 5px solid green;
-}
+	label {
+		display: block;
+		width: 100%;
+		float: left;
+		cursor: pointer;
+	}
+
+	input[type="radio"]:checked+label {
+		border: 5px solid green;
+	}
 </style>
 <body class="hold-transition skin-bordo sidebar-mini">
 	<!-- Modal Editar -->
@@ -147,7 +147,7 @@ input[type="radio"]:checked+label {
 											<div class="box-body table-responsive no-padding">
 												<table class="table table-hover">
 													<tbody id="resultado_consulta_alterar">
-
+														
 													</tbody>
 												</table>
 											</div>
@@ -528,7 +528,21 @@ input[type="radio"]:checked+label {
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-hover">
-							<tbody id="resultado_consulta_editar">
+							<input type="hidden" name="paginacao_ativa" value="1" id="paginacao_ativa">
+							<div class="col-sm-7 mostra_resultado" id="div_paginacao_editar">
+								<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
+									<ul class="pagination">
+									<li class="paginate_button">
+										<a href="#" id="pagina1" onclick="paginacao(1)" tabindex="0">1
+										</a>
+									</li>
+									<li class="paginate_button ">
+										<a href="#" id="pagina2" onclick="paginacao(2)" tabindex="0">2
+										</a>
+									</li>
+								</div>
+							</div>
+							<tbody id="resultado_consulta_editar" class="mostra_resultado">
 
 							</tbody>
 						</table>

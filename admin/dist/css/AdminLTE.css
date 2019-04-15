@@ -5408,3 +5408,6 @@ a.img-thumbnail:hover, a.img-thumbnail:focus {
     background-color: #fff!important;
 }
 
+.mostra_resultado{
+  display: none;
+}
