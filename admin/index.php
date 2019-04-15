@@ -55,7 +55,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 		<header class="main-header">
 
 			<!-- Logo -->
-			<a href="index2.html" class="logo">
+			<a href="index.php" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>A</b>CA</span>
 				<!-- logo for regular state and mobile devices -->
