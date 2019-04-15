@@ -358,8 +358,8 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-futbol"></i></span>
-							</div>
+								<a href=""><span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-futbol"></i></span>
+								</a></div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Futebol</h4>
 								<p>Futebol masculino.</p>
@@ -369,8 +369,8 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="far fa-futbol"></i></span>
-							</div>
+								<a href=""><span class="ms-icon ms-icon-lg ms-icon"><i class="far fa-futbol"></i></span>
+								</a></div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Futsal</h4>
 								<p>Futsal feminino e masculino.</p>
@@ -380,8 +380,8 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-basketball-ball"></i></span>
-							</div>
+								<a href=""><span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-basketball-ball"></i></span>
+								</a></div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Basquete</h4>
 								<p>Basquete feminino e masculino.</p>
@@ -391,8 +391,8 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-baseball-ball"></i></span>
-							</div>
+								<a href=""><span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-baseball-ball"></i></span>
+								</a></div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Handebol</h4>
 								<p>Handebol feminino e masculino.</p>
@@ -402,7 +402,7 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 					<div class="col-lg-4 col-md-6 col-sm-6 mb-2">
 						<div class="ms-icon-feature wow flipInX animation-delay-4">
 							<div class="ms-icon-feature-icon">
-								<span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-volleyball-ball"></i></span>
+								<a href="/esportes/volei.html"><span class="ms-icon ms-icon-lg ms-icon"><i class="fas fa-volleyball-ball"></i></span></a>
 							</div>
 							<div class="ms-icon-feature-content">
 								<h4 class="color-bordo">Vôlei</h4>
@@ -427,34 +427,34 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 		</div> <!-- container -->
 		<div class="wrap bg-bordo color-dark">
 			<div class="container">
-				<h1 class="color-white text-center mb-4">Some numerical data</h1>
+				<h1 class="color-white text-center mb-4">Dados</h1>
 				<div class="row">
 					<div class="col-xl-3 col-md-6">
 						<div class="card card-royal card-body overflow-hidden text-center wow zoomInUp animation-delay-2">
 							<h2 class="counter">450</h2>
-							<i class="fa fa-4x fa-coffee color-royal"></i>
-							<p class="mt-2 no-mb lead small-caps">cups of coffee</p>
+							<i class="fas fa-4x fa-award color-royal"></i>
+							<p class="mt-2 no-mb lead small-caps">prêmios ganhos</p>
 						</div>
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="card card-success card-body overflow-hidden text-center wow zoomInUp animation-delay-5">
 							<h2 class="counter">64</h2>
-							<i class="fa fa-4x fa-briefcase color-success"></i>
-							<p class="mt-2 no-mb lead small-caps">projects done</p>
+							<i class="fas fa-4x fa-chess-queen color-success"></i>
+							<p class="mt-2 no-mb lead small-caps">troféus</p>
 						</div>
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="card card-danger card-body overflow-hidden text-center wow zoomInUp animation-delay-4">
 							<h2 class="counter">600</h2>
-							<i class="fa fa-4x fa-comments-o color-danger"></i>
-							<p class="mt-2 no-mb lead small-caps">comments</p>
+							<i class="fas fa-4x fa-medal color-danger"></i>
+							<p class="mt-2 no-mb lead small-caps">Jogos vencidos</p>
 						</div>
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="card card-info card-body overflow-hidden text-center wow zoomInUp animation-delay-3">
 							<h2 class="counter">3500</h2>
 							<i class="fa fa-4x fa-group color-info"></i>
-							<p class="mt-2 no-mb lead small-caps">happy clients</p>
+							<p class="mt-2 no-mb lead small-caps">sócios</p>
 						</div>
 					</div>
 				</div>
