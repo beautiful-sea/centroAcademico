@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+	$("#expandir-imagens").click(function(){
+		$(this).hide();
+		$(".div-img-alterar").width("40%");
+		$("#diminuir-imagens").show();
+	})
+
+	$("#diminuir-imagens").click(function(){
+		$(this).hide();
+		$(".div-img-alterar").width("130px");
+		$("#expandir-imagens").show();
+	})
 	$(".todas_imagens").on("click",function(){//Ao clicar no botão de mostrar todos produtos
 		tipo = this.getAttribute("data-tipo");//Define se é uma alteração de posicao da imagem ou edicao de uma existente
 		$.ajax({
@@ -53,7 +64,8 @@ $(document).ready(function(){
 	});
 
 	function preenche_tabela(dados,tipo){
-		tabela_de_resultado = '<tr><th>ID</th><th>Foto</th><th>Título</th><th>Data</th><th></th>';
+		// tabela_de_resultado = '<tr><th>ID</th><th>Foto</th><th>Título</th><th>Data</th><th></th>';
+		tabela_de_resultado = '';
 
 		$.each(dados, function(chave,valor){
 						//Formatar Data do Evento
@@ -68,14 +80,22 @@ $(document).ready(function(){
 							<button class="btn btn-danger btn-remover"  title="Remover" data-remover="'+valor.id+'" data-toggle="modal" data-target="#modal-remover"><i class="fa fa-trash"></i></button></td></tr>';
 						}else if(tipo == 'alterar'){
 							tabela_de_resultado = tabela_de_resultado + 
-							'</tr><tr><td>'+valor.id+'</td><td><img class="img-detalhes-busca" alt='+valor.titulo+' src="../../../dist/img/atletica/ultimas_fotos/'+valor.foto+'"></td><td>'+valor.titulo+'</td><td>'+data_evento+'</td>\
-							<td><input type="radio" name="imagem_nova" value="'+valor.id+'">';
+							'\
+							<div class="col-xl-4 col-md-4 mb-4 div-img-alterar" style="height:150px">\
+							<div class="ms-thumbnail-container wow fadeInUp">\
+							<figure class="ms-thumbnail"><input type="radio" name="imagem_nova" value="'+valor.id+'" id="'+valor.id+'">\
+							<label for="'+valor.id+'"><img style="height:100px" src="../../../dist/img/atletica/ultimas_fotos/'+valor.foto+'" alt="" class="img-fluid">\
+							</labe>\
+							</figure>\
+							</div>\
+							</div>';
 						}
 					});
 
 		$("#resultado_consulta_"+tipo).html(tabela_de_resultado);//Concatena o tipo de consulta para definir o lugar de exibicao(alteracao/edição)
 
 	}
+
 
 
 
