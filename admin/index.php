@@ -288,7 +288,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 			</div>
 			<div class="pull-left info">
 				<p><?php echo($sessao_usuario['nome']);  ?></p>
-				<a href="../../controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
+				<a href="controller/logout.php"><i class="fa fa-power-off"></i> Sair</a>
 			</div>
 		</div>
 		<!-- sidebar menu: : style can be found in sidebar.less -->
