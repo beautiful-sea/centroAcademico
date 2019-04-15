@@ -61,10 +61,10 @@
       </div>
     </form>
     <!-- /.social-auth-links -->
-
+    <?php if(isset($_GET['login']) && $_GET['login'] == 'false') echo '<div class="alert alert-danger"> Email ou senha incorretos.</div>';?>
     <a href="#" >Esqueci minha senha</a><br>
     <a href="register.html" class="text-center"></a>
-
+    
   </div>
   <!-- /.login-box-body -->
 </div>

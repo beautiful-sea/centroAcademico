@@ -42,7 +42,7 @@ class Usuario{
 			$_SESSION['usuario'] = $this->checarLogin();
 			header('Location: ../index.php');
 		}else{
-			echo 'n exste';
+			header('Location: ../login.php?login=false');
 		}
 	}
 
