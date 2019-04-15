@@ -152,6 +152,7 @@ class UltimasFotos{
 		        // Concatena a pasta com o nome
 				$destino = '../../dist/img/atletica/ultimas_fotos/' . $novoNome;
 
+				chmod('../../dist/img/atletica/ultimas_fotos/',0777);
 		        // tenta mover o arquivo para o destino
 				if ( @move_uploaded_file ( $arquivo_tmp, $destino ) ) {
 					echo 'Arquivo salvo com sucesso em : <strong>' . $destino . '</strong><br />';
