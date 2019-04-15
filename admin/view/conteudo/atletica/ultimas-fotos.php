@@ -8,7 +8,7 @@ if(!isset($_SESSION['usuario'])){
 }else{
 	$sessao_usuario = $_SESSION['usuario'];
 	$ultimas_fotos = new UltimasFotos();
-	$todas = $ultimas_fotos->buscarTodas();
+	$todas = $ultimas_fotos->buscarTodas('');
 
 	$mensagem = '';//Mensagem de retorno ao enviar formulario de cadastro
 	$alert = ''; //Define a cordo do alert gerado para mensagem
@@ -138,8 +138,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						</div>
 						<div class="modal-body">
 							<div class="box-body" style="overflow: auto;height: 400px">
-								<i class="fa fa-expand text-center todas_imagens" style="cursor: pointer;" id="expandir-imagens"> Aumentar </i>
-								<i class="fa fa-compress text-center todas_imagens" style="cursor: pointer;display: none" id="diminuir-imagens"> Diminuir</i>
+								<i class="fa fa-expand text-center" style="cursor: pointer;" id="expandir-imagens"> Aumentar </i>
+								<i class="fa fa-compress text-center" style="cursor: pointer;display: none" id="diminuir-imagens"> Diminuir</i>
 								<form role="form" action="../../../controller/atletica/alterar_ultimas_fotos.php" method="POST" enctype="multipart/form-data">
 									<div class="box-body">
 										<input type="hidden" name="imagem_antiga" id="imagem_antiga" value="">
@@ -532,14 +532,19 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 							<div class="col-sm-7 mostra_resultado" id="div_paginacao_editar">
 								<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
 									<ul class="pagination">
-									<li class="paginate_button">
-										<a href="javascript:void(0)" id="pagina1" onclick="paginacao(1)" tabindex="0">1
-										</a>
-									</li>
-									<li class="paginate_button ">
-										<a href="javascript:void(0)" id="pagina2" onclick="paginacao(2)" tabindex="0">2
-										</a>
-									</li>
+										<?php 
+											$qnt_paginas = count($todas) / 4;
+											$qnt_paginas =  ceil($qnt_paginas);
+											
+											for ($i=1; $i <= $qnt_paginas; $i++) { 
+												echo '
+												<li class="paginate_button">
+													<a href="javascript:void(0)" id="pagina'.$i.'" onclick="paginacao('.$i.')" tabindex="'.$i.'">'.$i.'
+													</a>
+												</li>';
+											}
+										?>
+									
 								</div>
 							</div>
 							<tbody id="resultado_consulta_editar" class="mostra_resultado">
@@ -565,7 +570,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 				<div class="col-md-1"></div>
 				<div class="row col-md-10 col-sm-8" style="padding: 20px 20px">
 					<?php 
-					foreach ($todas as $value) {
+					foreach ($ultimas_fotos->buscarTodas() as $value) {
 
 						$encurta_descricao = substr($value['descricao'], 0,50);
 						//Se o tamanho da descricao original for menor do que ela encurtada

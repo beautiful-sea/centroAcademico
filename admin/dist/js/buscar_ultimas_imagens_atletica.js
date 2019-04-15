@@ -22,7 +22,7 @@ $("#diminuir-imagens").click(function(){
 
 		if($(this).html() == 'Mostrar Todas'){
 			$(this).html('Ocultar Imagens');
-		}else{
+		}else if($(this).html() == 'Ocultar Imagens'){
 			$(this).html('Mostrar Todas');
 		}
 

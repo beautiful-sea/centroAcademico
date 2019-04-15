@@ -196,7 +196,7 @@ class UltimasFotos{
 	// 	}
 	// }
 
-	public function buscarTodas($opcoes = 'ORDER BY dt_cadastro DESC LIMIT 6'){
+	public function buscarTodas($opcoes = 'ORDER BY data_evento DESC LIMIT 1,6'){
 
 		try{
 
