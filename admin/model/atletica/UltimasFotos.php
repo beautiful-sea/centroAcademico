@@ -240,7 +240,7 @@ class UltimasFotos{
 
 		try{
 
-			$sql = "DELETE FROM produtos WHERE id = :id";
+			$sql = "DELETE FROM fotos_atletica WHERE id = :id";
 
 			$stmt = Conexao::getInstancia()->prepare($sql);
 

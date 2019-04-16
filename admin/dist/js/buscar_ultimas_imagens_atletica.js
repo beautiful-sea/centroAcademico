@@ -43,19 +43,19 @@ $("#diminuir-imagens").click(function(){
 				data = JSON.parse(data);
 				preenche_tabela(data,tipo);
 
-					// $(".btn-detalhes").on("click",function(){//Ao clicar no botão de detalhes
-					// 	botao = this;
-					// 	id = botao.getAttribute("data-detalhes");//Pegando id do usuario pelo atributo do botao
-					// 	$.each(data, function(chave,valor){
-					// 		if(valor.id == id){
-					// 			$("#body-modal-detalhes").html('<dt>ID:</dt><dd>'+valor.id+'</dd>\
-					// 				<dt>Nome:</dt><dd>'+valor.nome+'</dd>\
-					// 				<dt>Valor:</dt><dd>R$ '+valor.valor+'</dd>\
-					// 				<dt>Valor para Sócios:</dt><dd> '+valor.data_evento+'</dd>\
-					// 				<dt>Imagem:</dt><dd><img class="img-detalhes-busca" alt='+valor.nome+' src="../../dist/img/loja/produtos/'+valor.foto+'"></dd>');
-					// 		}
-					// 	})
-					// });
+					$(".btn-detalhes").on("click",function(){//Ao clicar no botão de detalhes
+						botao = this;
+						id = botao.getAttribute("data-detalhes");//Pegando id do usuario pelo atributo do botao
+						$.each(data, function(chave,valor){
+							if(valor.id == id){
+								$("#body-modal-detalhes").html('<dt>ID:</dt><dd>'+valor.id+'</dd>\
+									<dt>Titulo:</dt><dd>'+valor.titulo+'</dd>\
+									<dt>Descrição:</dt><dd>R$ '+valor.descricao+'</dd>\
+									<dt>Data:</dt><dd> '+valor.data_evento+'</dd>\
+									<dt>Imagem:</dt><dd><img class="img-detalhes-busca" alt='+valor.nome+' src="../../../dist/img/atletica/ultimas_fotos/'+valor.foto+'"></dd>');
+							}
+						})
+					});
 
 					$(".btn-editar").on("click",function(){//Ao clicar no botão de edição do usuário
 						botao = this;
@@ -71,15 +71,15 @@ $("#diminuir-imagens").click(function(){
 						})
 					});
 
-					// $(".btn-remover").on("click",function(){//Ao clicar no botão de remover usuário
-					// 	botao = this;
-					// 	id = botao.getAttribute("data-remover");//Pegando id do usuario pelo atributo do botao
-					// 	$.each(data, function(chave,valor){
-					// 		if(valor.id == id){
-					// 			$("#remover_id").val(valor.id);
-					// 		}
-					// 	})
-					// });
+					$(".btn-remover").on("click",function(){//Ao clicar no botão de remover usuário
+						botao = this;
+						id = botao.getAttribute("data-remover");//Pegando id do usuario pelo atributo do botao
+						$.each(data, function(chave,valor){
+							if(valor.id == id){
+								$("#remover_id").val(valor.id);
+							}
+						})
+					});
 				}
 			});
 	}
