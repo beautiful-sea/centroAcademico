@@ -2,22 +2,12 @@
 session_start();
 require_once('../../auto_load.php');
 
+$usuario = new Usuario($_POST);
 
-$id 	= $_POST['id'];
-$nome 	= $_POST['nome'];	
-$email	= $_POST['email'];
-$admin  = $_POST['admin'];
-
-$usuario = new Usuario;
-
-$usuario->setNome($nome);
-$usuario->setEmail($email);
-$usuario->setAdmin($admin);
-
-if($usuario->editar($id)){
+if($usuario->editar()){
 	header("Location: ../../view/usuarios/gerenciar.php?e=1");
 }else{
-	header("Location: ../../view/usuarios/gerenciar.php?e=1");	
+	header("Location: ../../view/usuarios/gerenciar.php?e=2");	
 }
 
 

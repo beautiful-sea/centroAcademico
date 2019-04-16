@@ -3,10 +3,6 @@ class Conexao{
 
     public static $instancia;
   
-    private function __construct() {
-        //
-    }
-  
     public static function getInstancia() {
         if (!isset(self::$instancia)) {
             self::$instancia = new PDO('mysql:host=localhost;dbname=centro_academico', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

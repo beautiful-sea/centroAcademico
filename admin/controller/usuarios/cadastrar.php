@@ -4,18 +4,12 @@ session_start();
 
 require_once('../../auto_load.php');
 
-$email 	= $_POST['email'];
-$nome 	= $_POST['nome'];
-$senha	= md5($_POST['senha']);
+$_POST['senha'] 	= md5($_POST['senha']);
+$_POST['senha2']	= md5($_POST['senha2']);
 
-$usuario = new Usuario;
+$usuario = new Usuario($_POST);
 
-$usuario->setNome($nome);
-$usuario->setEmail($email);
-
-if($senha == md5($_POST['senha2'])){
-	$usuario->setSenha($senha);
-}else{
+if($_POST['senha'] != $_POST['senha2']){
 	header("Location: ../../view/usuarios/gerenciar.php?r=2");
 }
 

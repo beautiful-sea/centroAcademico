@@ -1,6 +1,6 @@
 <?php
 
-class Produto{
+class Produto extends Model{
 
 	private $nome;
 	private $descricao;
@@ -9,73 +9,23 @@ class Produto{
 	private $foto;
 
 
-	public function getNome()
-	{
-		return $this->nome;
-	}
-
-	public function setNome($nome)
-	{
-		$this->nome = $nome;
-	}
-
-	public function getDescricao()
-	{
-		return $this->descricao;
-	}
-	
-	public function setDescricao($descricao)
-	{
-		$this->descricao = $descricao;
-	}
-
-	public function getValor()
-	{
-		return $this->valor;
-	}
-	
-	public function setValor($valor)
-	{
-		$this->valor = $valor;
-	}
-
-	public function getValor_socios()
-	{
-		return $this->valor_socios;
-	}
-	
-	public function setValor_socios($valor_socios)
-	{
-		$this->valor_socios = $valor_socios;
-	}
-
-	public function getFoto()
-	{
-		return $this->foto;
-	}
-	
-	public function setFoto($foto)
-	{
-		$this->foto = $foto;
-	}
 
 	public function cadastrar(){
 
-		$sql = "INSERT INTO produtos (nome,descricao,valor,valor_socios,foto) VALUES(
-		:nome,:descricao,:valor,:valor_socios,:foto)";
-
-		$stmt = Conexao::getInstancia()->prepare($sql);
+		$sql = new Sql;
 
 		$foto = $this->salvarImagem($this->getFoto());
 
 		if($foto === true){
-			$stmt->bindValue(":nome",$this->getNome());
-			$stmt->bindValue(":descricao",$this->getDescricao());
-			$stmt->bindValue(":valor",$this->getValor());
-			$stmt->bindValue(":valor_socios",$this->getValor_socios());
-			$stmt->bindValue(":foto",$this->getFoto());
-
-			return $stmt->execute();	
+			return $sql->query(
+				"INSERT INTO produtos (nome,descricao,valor,valor_socios,foto) VALUES(
+				:nome,:descricao,:valor,:valor_socios,:foto)",[
+					":nome"			=>	$this->getNome(),
+					":descricao"	=>	$this->getDescricao(),
+					":valor"		=>	$this->getValor(),
+					":valor_socios"	=>	$this->getValor_socios(),
+					":foto"			=>	$this->getFoto()
+				]);
 		}else{
 			return $foto;
 		}
@@ -83,27 +33,32 @@ class Produto{
 
 	public function editar($id){
 
+		$sql = new sql;
+
 		if($this->getFoto()){//Verifica se o usuário enviou alguma foto e salva a imagem
 			$fotoAntiga = $this->buscarPorID($id);
-			if($this->salvarImagem($this->getFoto())){
+
+			if($this->salvarImagem($this->getFoto())){//Se nova imagem for salva, apagar a antiga da pasta
 				unlink('../../dist/img/loja/produtos/' .$fotoAntiga['foto']);
 			}
-			$foto = $this->getFoto();
-			$sql = "UPDATE produtos SET nome = :nome,descricao = :descricao,valor = :valor,valor_socios = :valor_socios, foto = :foto WHERE id = :id";
-			$stmt = Conexao::getInstancia()->prepare($sql);
-			$stmt->bindValue(":foto",$foto);
+
+			return $sql->query(
+				"UPDATE produtos SET nome = :nome,descricao = :descricao,valor = :valor,valor_socios = :valor_socios, foto = :foto WHERE id = :id",[
+					":nome"			=>	$this->getNome(),
+					":descricao"	=>	$this->getDescricao(),
+					":valor"		=>	$this->getValor(),
+					":valor_socios"	=>	$this->getValor_socios(),
+					":foto"			=>	$this->getFoto(),
+					":id"			=>	$id]);
 		}else{
-			$sql = "UPDATE produtos SET nome = :nome,descricao = :descricao,valor = :valor,valor_socios = :valor_socios WHERE id = :id";
-			$stmt = Conexao::getInstancia()->prepare($sql);
+			return $sql->query(
+				"UPDATE produtos SET nome = :nome,descricao = :descricao,valor = :valor,valor_socios = :valor_socios WHERE id = :id",[
+					":nome"			=>	$this->getNome(),
+					":descricao"	=>	$this->getDescricao(),
+					":valor"		=>	$this->getValor(),
+					":valor_socios"	=>	$this->getValor_socios(),
+					":id"			=>	$id]);
 		}
-
-		$stmt->bindValue(":nome",$this->getNome());
-		$stmt->bindValue(":descricao",$this->getDescricao());
-		$stmt->bindValue(":valor",$this->getValor());
-		$stmt->bindValue(":valor_socios",$this->getValor_socios());
-		$stmt->bindValue(":id",$id);
-
-		return $stmt->execute();	
 	}
 
 	public function salvarImagem($imagem){
@@ -156,19 +111,12 @@ class Produto{
 	public function buscarProduto($termo){
 
 		try{
-
 			$termo = "%".$termo."%";
-			$sql = "SELECT * FROM produtos where nome LIKE :termo ORDER BY nome ";
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
+			$sql = new Sql;
 
-			$stmt->bindValue(":termo",$termo);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			return $consulta;
+			return $sql->select("SELECT * FROM produtos where nome LIKE :termo ORDER BY nome",[
+				":termo"	=>	$termo]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -179,17 +127,8 @@ class Produto{
 	public function buscarTodos(){
 
 		try{
-
-			$sql = "SELECT * FROM produtos ORDER BY nome ";
-
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			return $consulta;
-
+			$sql = new Sql;
+			return $sql->select("SELECT * FROM produtos ORDER BY nome ");
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());
@@ -198,18 +137,9 @@ class Produto{
 
 	public function buscarPorID($id){
 		try{
-
-			$sql = "SELECT * FROM produtos where id = :id";
-
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(":id",$id);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetch(PDO::FETCH_ASSOC);
-
-			return $consulta;
+			$sql = new Sql;
+			return $sql->select("SELECT * FROM produtos where id = :id",[
+				":id"	=>	$id]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -219,14 +149,10 @@ class Produto{
 	public function deletar($id){
 
 		try{
+			$sql = new Sql;
 
-			$sql = "DELETE FROM produtos WHERE id = :id";
-
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(':id',$id);
-
-			return $stmt->execute();
+			return $sql->query("DELETE FROM produtos WHERE id = :id",[
+				":id"	=>	$id]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");

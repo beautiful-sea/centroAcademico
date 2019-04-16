@@ -1,7 +1,7 @@
 <?php
 
 
-class Usuario{
+class Usuario extends Model{
 
 	private $nome;
 	private $email;
@@ -9,34 +9,10 @@ class Usuario{
 	private $admin;
 
 
-	public function getNome(){
-		return $this->nome;
+	public function __construct($dados = Array()){
+		$this->setDados($dados);
 	}
-	public function setNome($nome){
-		$this->nome = $nome;
-	}
-	public function getEmail(){
-		return $this->email;
-	}
-	public function setEmail($email){
-		$this->email = $email;
-	}
-	public function getSenha(){
-		return $this->senha;
-	}
-	public function setSenha($senha){
-		$this->senha = $senha;
-	}
-	public function getAdmin(){
-		return $this->admin;
-	}
-	public function setAdmin($admin){
-		$this->admin = $admin;
-	}
-	public function __construct(){
 
-
-	}
 	public function login(){
 		if($this->checarLogin()){
 			$_SESSION['usuario'] = $this->checarLogin();
@@ -50,21 +26,12 @@ class Usuario{
 
 		try{
 
-			$email = $this->getEmail();
-			$senha = $this->getSenha();
+			$sql = new Sql;
 
-			$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND admin = 1";
-
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(":email",$email);
-			$stmt->bindValue(":senha",$senha);
-
-			$stmt->execute();
-
-			$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-			return $resultado;
+			return $sql->select(
+				"SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND admin = 1",[
+				":email"	=>	$this->getEmail(),
+				":senha"	=>	$this->getSenha()]);
 
 		}catch(Exception $e){
 			print "Erro ao acessar Banco de Dados<br>";
@@ -74,17 +41,11 @@ class Usuario{
 
 	}
 
-	public function getTodos(){//Retorna todos usuarios que não são administradores
+	public function getTodos(){//Retorna todos usuarios
 		try{
-			$sql = "SELECT * FROM usuarios";
+			$sql = new Sql;
+			return $sql->select("SELECT * FROM usuarios");
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->execute();
-
-			$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			return $resultado;
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());
@@ -95,19 +56,12 @@ class Usuario{
 
 		try{
 
-			$nome = $this->getNome();
-			$email = $this->getEmail();
-			$senha = $this->getSenha();
-
-			$sql = "INSERT INTO usuarios (nome, email, senha) VALUES(:nome,:email,:senha)";
-
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(":nome",$nome);
-			$stmt->bindValue(":email",$email);
-			$stmt->bindValue(":senha",$senha);
-
-			return $stmt->execute();
+			$sql = new Sql;
+			return $sql->query(
+				"INSERT INTO usuarios (nome, email, senha) VALUES(:nome,:email,:senha)",
+				[':nome'	=>	$this->getNome(),
+				':email'	=>	$this->getEmail(),
+				':senha'	=>	$this->getSenha()]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -115,35 +69,32 @@ class Usuario{
 		}
 	}
 
-	public function editar($id){
+	public function editar(){
 
 		try{
-			$sql = "UPDATE usuarios SET nome = :nome,email = :email, admin = :admin WHERE id = :id";
+			$sql = new Sql;
+			return $sql->query(
+				"UPDATE usuarios SET nome = :nome,email = :email, admin = :admin WHERE id = :id",[
+					':nome'		=>	$this->getNome(),
+					':email'	=>	$this->getEmail(),
+					':admin'	=>	$this->getAdmin(),
+					':id'		=>	$this->getId()]);
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(':nome',$this->getNome());
-			$stmt->bindValue(':email',$this->getEmail());
-			$stmt->bindValue(':id',$id);
-			$stmt->bindValue(':admin',$this->getAdmin());
-
-			return $stmt->execute();
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());
 		}
 	}
 
-	public function deletar($id){
+	public function deletar(){
 
 		try{
-			$sql = "DELETE FROM usuarios WHERE id = :id";
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
+			$sql = new Sql;
 
-			$stmt->bindValue(':id',$id);
-
-			return $stmt->execute();
+			return $sql->query(
+				"DELETE FROM usuarios WHERE id = :id",[
+					":id"	=>	$this->getId()]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -154,17 +105,10 @@ class Usuario{
 	public function checarEmail(){//Verifica se email ja está cadastrado
 
 		try{
+			$sql = new Sql;
 
-			$email = $this->getEmail();
-
-			$sql 	= "SELECT email FROM usuarios where email = :email";
-
-			$stmt	= Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(":email",$email);
-			$stmt->execute();
-
-			$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$resultado =  $sql->select("SELECT email FROM usuarios where email = :email",[
+				":email"	=>	$this->getEmail()]);
 
 			if(count($resultado) > 0){
 				return false;
@@ -180,19 +124,13 @@ class Usuario{
 	public function buscarUsuario($termo){
 
 		try{
-
 			$termo = "%".$termo."%";
-			$sql = "SELECT * FROM usuarios where (email LIKE :termo OR nome LIKE :termo) ORDER BY nome ";
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
+			$sql = new Sql;
 
-			$stmt->bindValue(":termo",$termo);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			return $consulta;
+			return $sql->select(
+				"SELECT * FROM usuarios where (email LIKE :termo OR nome LIKE :termo) ORDER BY nome ",[
+				":termo"	=>	$termo]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -201,20 +139,13 @@ class Usuario{
 
 	}
 
-	public function buscarPorID($id){
+	public function buscarPorID(){
 		try{
 
-			$sql = "SELECT * FROM usuarios where id = :id";
+			$sql = new Sql;
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(":id",$id);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetch(PDO::FETCH_ASSOC);
-
-			return $consulta;
+			return $sql->select("SELECT * FROM usuarios where id = :id",[
+				":id"	=>	$this->getId()]);
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");

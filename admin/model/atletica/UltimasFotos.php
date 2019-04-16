@@ -1,52 +1,12 @@
 <?php
 
-class UltimasFotos{
+class UltimasFotos extends Model{
 
 	private $titulo;
 	private $descricao;
 	private $foto;
 	private $data_evento;
 
-	public function getTitulo()
-	{
-		return $this->titulo;
-	}
-
-	public function setTitulo($titulo)
-	{
-		$this->titulo = $titulo;
-	}
-
-	public function getData_evento()
-	{
-		return $this->data_evento;
-	}
-
-	public function setData_evento($data_evento)
-	{
-		$this->data_evento = $data_evento;
-	}
-
-	public function getDescricao()
-	{
-		return $this->descricao;
-	}
-	
-	public function setDescricao($descricao)
-	{
-		$this->descricao = $descricao;
-	}
-
-
-	public function getFoto()
-	{
-		return $this->foto;
-	}
-	
-	public function setFoto($foto)
-	{
-		$this->foto = $foto;
-	}
 
 	public function cadastrar(){
 
