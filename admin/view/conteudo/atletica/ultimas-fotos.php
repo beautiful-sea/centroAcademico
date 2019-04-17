@@ -567,7 +567,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<div class="box">
 							<div class="box-header">
 								<h3 class="box-title">Listagem de fotos cadastradas</h3>
-								<button type="button" class=" btn btn-default btn-raised todas_imagens" data-tipo="editar">Mostrar Todas</button>
+								<button type="button" class=" btn btn-default btn-raised todos_resultados" data-tipo="editar">Todos</button>
 								<div class="box-tools">
 									<form role="form" action="#" method="POST" id="form_buscar_produto">
 										<div class="input-group input-group-sm" style="width: 150px;">
@@ -583,6 +583,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 							<!-- /.box-header -->
 							<div class="box-body table-responsive no-padding">
 								<table class="table table-hover">
+									<input type="hidden" id="tipo_consulta" value="ultimas_fotos">
 									<input type="hidden" name="paginacao_ativa" value="1" id="paginacao_ativa">
 									<div class="col-sm-7 mostra_resultado" id="div_paginacao_editar">
 										<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
@@ -602,7 +603,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 												
 											</div>
 										</div>
-										<tbody id="resultado_consulta_editar" class="mostra_resultado">
+										<tbody id="resultado_consulta" class="mostra_resultado">
 
 										</tbody>
 									</table>
@@ -921,9 +922,6 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 	<script src="../../../bower_components/chart.js/Chart.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../../dist/js/demo.js"></script>
-
-
-	<script src="../../../dist/js/ultimas-fotos.js"></script>
-	<script src="../../../dist/js/buscar_ultimas_imagens_atletica.js"></script>
+	<script src="../../../dist/js/busca.js"></script>
 </body>
 </html>

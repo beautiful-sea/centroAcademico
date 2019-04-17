@@ -5,8 +5,8 @@ require_once("../../auto_load.php");
 
 $produto = new Produto;
 
-if(isset($_POST['todos']) && $_POST['todos'] == 1){
-	echo json_encode($produto->buscarTodos());
+if(isset($_POST['todos'])){
+	echo json_encode($produto->buscarTodos($_POST['todos']));
 }
 elseif(isset($_POST['buscaPorID'])){
 	echo json_encode($produto->buscarPorID($_POST['buscaPorID']));

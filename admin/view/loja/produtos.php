@@ -7,8 +7,8 @@ if(!isset($_SESSION['usuario'])){
 	header('Location: login.php');
 }else{
 	$sessao_usuario = $_SESSION['usuario'];
-	$usuario = new Usuario;
-	$qntd_usuarios = count($usuario->getTodos());
+	$produto = new Produto;
+	$qntd_produtos = count($produto->buscarTodos());
 
 	$mensagem = '';//Mensagem de retorno ao enviar formulario de cadastro
 	$alert = ''; //Define a cor do do alert gerado para mensagem
@@ -67,8 +67,6 @@ if(!isset($_SESSION['usuario'])){
 	<link rel="stylesheet" href="../../bower_components/font-awesome/css/all.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-	<!-- jvectormap -->
-	<link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="../../dist/css/AdminLTE.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -482,37 +480,37 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 				</li>
 				<li class="treeview">
 					<a href="#">
-					<i class="fa fa-pager"></i> <span>Gerenciar Conteúdo</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li class="treeview">
-						<a href="#"><i class="far fa-circle"></i> Atlética
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu" style="display: none;">
-							<li><a href="../conteudo/atletica/ultimas-fotos.php"><i class="far fa-images"></i> Últimas Fotos</a></li>
-							<li><a href="#"><i class="fa fa-columns"></i> Notícias</a></li>
-						</ul>
-					</li>
+						<i class="fa fa-pager"></i> <span>Gerenciar Conteúdo</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li class="treeview">
+							<a href="#"><i class="far fa-circle"></i> Atlética
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu" style="display: none;">
+								<li><a href="../conteudo/atletica/ultimas-fotos.php"><i class="far fa-images"></i> Últimas Fotos</a></li>
+								<li><a href="#"><i class="fa fa-columns"></i> Notícias</a></li>
+							</ul>
+						</li>
 
-					<li class="treeview">
-						<a href="#"><i class="far fa-circle"></i> Centro Acadêmico
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu" style="display: none;">
-							<li><a href="#"><i class="far fa-circle-o"></i> Últimas Fotos</a></li>
-							<li><a href="#"><i class="far fa-circle-o"></i> Notícias</a></li>
-							
-						</ul>
-					</li>
-				</ul>
+						<li class="treeview">
+							<a href="#"><i class="far fa-circle"></i> Centro Acadêmico
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu" style="display: none;">
+								<li><a href="#"><i class="far fa-circle-o"></i> Últimas Fotos</a></li>
+								<li><a href="#"><i class="far fa-circle-o"></i> Notícias</a></li>
+
+							</ul>
+						</li>
+					</ul>
 				</li>
 
 			</ul>
@@ -549,7 +547,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">Buscar produtos</h3>
-							<button class=" btn btn-default btn-raised" id="todos_produtos">Todos</button>
+							<button class=" btn btn-default btn-raised todos_resultados">Todos</button>
 							<div class="box-tools">
 								<form role="form" action="#" method="POST" id="form_buscar_produto">
 									<div class="input-group input-group-sm" style="width: 150px;">
@@ -565,268 +563,287 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<!-- /.box-header -->
 						<div class="box-body table-responsive no-padding">
 							<table class="table table-hover">
-								<tbody id="resultado_consulta">
+								<input type="hidden" id="tipo_consulta" value="produto">
+								<input type="hidden" name="paginacao_ativa" value="1" id="paginacao_ativa">
+								<div class="col-sm-7 mostra_resultado" id="div_paginacao">
+									<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
+										<ul class="pagination">
+											<?php 
+											$qntd_paginas = ceil($qntd_produtos / 4);
 
-								</tbody></table>
-							</div>
-							<!-- /.box-body -->
-						</div>
-						<!-- /.box -->
-					</div>
-					<div class="col-md-6 ">
-						<!-- general form elements -->
-						<div class="box box-primary">
-							<div class="box-header with-border">
-								<h3 class="box-title">Cadastro de Produtos</h3>
-							</div>
-							<!-- /.box-header -->
-							<!-- form start -->
-							<form role="form" action="../../controller/loja/cadastrar_produtos.php" method="POST" enctype="multipart/form-data">
-								<div class="box-body">
-									<div class="form-group">
-										<label for="cadastro_nome">Nome</label>
-										<input type="text" name="nome" class="form-control" id="cadastro_nome" placeholder="Digite o nome do produto">
-									</div>
-									<div class="form-group">
-										<label for="cadastro_valor">Valor</label>
-										<div class="input-group">
-											<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
-											<input type="number" step="0.01" class="form-control" id="cadastro_valor" name="valor" placeholder="Digite o preço do produto">
+											for ($i=1; $i <= $qntd_paginas; $i++) { 
+												echo '
+												<li class="paginate_button">
+												<a href="javascript:void(0)" id="pagina'.$i.'" onclick="paginacao('.$i.')" tabindex="'.$i.'">'.$i.'
+												</a>
+												</li>';
+											}
+											?>
+
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="cadastro_valor_socios">Valor para Sócios</label>
-										<div class="input-group">
-											<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
-											<input type="number" step="0.01" name="valor_socios" id="cadastro_valor_socios" class="form-control" placeholder="Digite o preço do produto">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="cadastro_descricao">Descrição</label>
-										<textarea  name="descricao" class="form-control" id="cadastro_descricao" placeholder="Digite a Descrição do Produto"></textarea>
-									</div>
-									<div class="form-group">
-										<label for="cadastro_foto">Foto</label>
-										<input type="file" name="foto" class="form-control" id="cadastro_foto">
-										<p class="help-block">Tamanho maximo: 5mb</p>
-									</div>
+									<tbody id="resultado_consulta" class="mostra_resultado">
+
+									</tbody></table>
 								</div>
 								<!-- /.box-body -->
-
-								<div class="box-footer">
-
-									<div <?php if($alert != '' && isset($_GET['r'])) echo "class='$alert'"; ?>>
-										<p><?php if($mensagem != '' && isset($_GET['r'])) echo $mensagem;?></p>
-									</div>
-									<button type="submit" class="btn btn-primary">Cadastrar</button>
-								</div>
-							</form>
+							</div>
+							<!-- /.box -->
 						</div>
-						<!-- /.box -->
+						<div class="col-md-6 ">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<h3 class="box-title">Cadastro de Produtos</h3>
+								</div>
+								<!-- /.box-header -->
+								<!-- form start -->
+								<form role="form" action="../../controller/loja/cadastrar_produtos.php" method="POST" enctype="multipart/form-data">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="cadastro_nome">Nome</label>
+											<input type="text" name="nome" class="form-control" id="cadastro_nome" placeholder="Digite o nome do produto">
+										</div>
+										<div class="form-group">
+											<label for="cadastro_valor">Valor</label>
+											<div class="input-group">
+												<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
+												<input type="number" step="0.01" class="form-control" id="cadastro_valor" name="valor" placeholder="Digite o preço do produto">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="cadastro_valor_socios">Valor para Sócios</label>
+											<div class="input-group">
+												<span class="input-group-addon"><b style="font-size: 15px">R</b><i class="fa fa-dollar-sign"></i></span>
+												<input type="number" step="0.01" name="valor_socios" id="cadastro_valor_socios" class="form-control" placeholder="Digite o preço do produto">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="cadastro_descricao">Descrição</label>
+											<textarea  name="descricao" class="form-control" id="cadastro_descricao" placeholder="Digite a Descrição do Produto"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="cadastro_foto">Foto</label>
+											<input type="file" name="foto" class="form-control" id="cadastro_foto">
+											<p class="help-block">Tamanho maximo: 5mb</p>
+										</div>
+									</div>
+									<!-- /.box-body -->
+
+									<div class="box-footer">
+
+										<div <?php if($alert != '' && isset($_GET['r'])) echo "class='$alert'"; ?>>
+											<p><?php if($mensagem != '' && isset($_GET['r'])) echo $mensagem;?></p>
+										</div>
+										<button type="submit" class="btn btn-primary">Cadastrar</button>
+									</div>
+								</form>
+							</div>
+							<!-- /.box -->
+						</div>
 					</div>
+				</div><!-- /.row -->
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Versão</b> 1.0.0
+			</div>
+			<strong>Copyright &copy; 2019 <a href="https://adminlte.io">xxx</a>.</strong> Todos direitos reservados.
+		</footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Home tab content -->
+				<div class="tab-pane" id="control-sidebar-home-tab">
+					<h3 class="control-sidebar-heading">Recent Activity</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+									<p>Will be 23 on April 24th</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-user bg-yellow"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+									<p>New phone +1(800)555-1234</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+									<p>nora@example.com</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+									<p>Execution time 5 seconds</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
+
+					<h3 class="control-sidebar-heading">Tasks Progress</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Custom Template Design
+									<span class="label label-danger pull-right">70%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Update Resume
+									<span class="label label-success pull-right">95%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-success" style="width: 95%"></div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Laravel Integration
+									<span class="label label-warning pull-right">50%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Back End Framework
+									<span class="label label-primary pull-right">68%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
+
 				</div>
-			</div><!-- /.row -->
-		</section>
-		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
+				<!-- /.tab-pane -->
 
+				<!-- Settings tab content -->
+				<div class="tab-pane" id="control-sidebar-settings-tab">
+					<form method="post">
+						<h3 class="control-sidebar-heading">General Settings</h3>
 
-	<footer class="main-footer">
-		<div class="pull-right hidden-xs">
-			<b>Versão</b> 1.0.0
-		</div>
-		<strong>Copyright &copy; 2019 <a href="https://adminlte.io">xxx</a>.</strong> Todos direitos reservados.
-	</footer>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Report panel usage
+								<input type="checkbox" class="pull-right" checked>
+							</label>
 
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Create the tabs -->
-		<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-			<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-			<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-		</ul>
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<!-- Home tab content -->
-			<div class="tab-pane" id="control-sidebar-home-tab">
-				<h3 class="control-sidebar-heading">Recent Activity</h3>
-				<ul class="control-sidebar-menu">
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-birthday-cake bg-red"></i>
+							<p>
+								Some information about this general settings option
+							</p>
+						</div>
+						<!-- /.form-group -->
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Allow mail redirect
+								<input type="checkbox" class="pull-right" checked>
+							</label>
 
-								<p>Will be 23 on April 24th</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-user bg-yellow"></i>
+							<p>
+								Other sets of options are available
+							</p>
+						</div>
+						<!-- /.form-group -->
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Expose author name in posts
+								<input type="checkbox" class="pull-right" checked>
+							</label>
 
-								<p>New phone +1(800)555-1234</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+							<p>
+								Allow the user to show his name in blog posts
+							</p>
+						</div>
+						<!-- /.form-group -->
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+						<h3 class="control-sidebar-heading">Chat Settings</h3>
 
-								<p>nora@example.com</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-file-code-o bg-green"></i>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Show me as online
+								<input type="checkbox" class="pull-right" checked>
+							</label>
+						</div>
+						<!-- /.form-group -->
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Turn off notifications
+								<input type="checkbox" class="pull-right">
+							</label>
+						</div>
+						<!-- /.form-group -->
 
-								<p>Execution time 5 seconds</p>
-							</div>
-						</a>
-					</li>
-				</ul>
-				<!-- /.control-sidebar-menu -->
-
-				<h3 class="control-sidebar-heading">Tasks Progress</h3>
-				<ul class="control-sidebar-menu">
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Custom Template Design
-								<span class="label label-danger pull-right">70%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Update Resume
-								<span class="label label-success pull-right">95%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-success" style="width: 95%"></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Laravel Integration
-								<span class="label label-warning pull-right">50%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Back End Framework
-								<span class="label label-primary pull-right">68%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-							</div>
-						</a>
-					</li>
-				</ul>
-				<!-- /.control-sidebar-menu -->
-
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Delete chat history
+								<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+							</label>
+						</div>
+						<!-- /.form-group -->
+					</form>
+				</div>
+				<!-- /.tab-pane -->
 			</div>
-			<!-- /.tab-pane -->
-
-			<!-- Settings tab content -->
-			<div class="tab-pane" id="control-sidebar-settings-tab">
-				<form method="post">
-					<h3 class="control-sidebar-heading">General Settings</h3>
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Report panel usage
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-
-						<p>
-							Some information about this general settings option
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Allow mail redirect
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-
-						<p>
-							Other sets of options are available
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Expose author name in posts
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-
-						<p>
-							Allow the user to show his name in blog posts
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<h3 class="control-sidebar-heading">Chat Settings</h3>
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Show me as online
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Turn off notifications
-							<input type="checkbox" class="pull-right">
-						</label>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Delete chat history
-							<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-						</label>
-					</div>
-					<!-- /.form-group -->
-				</form>
-			</div>
-			<!-- /.tab-pane -->
-		</div>
-	</aside>
-	<!-- /.control-sidebar -->
+		</aside>
+		<!-- /.control-sidebar -->
 	<!-- Add the sidebar's background. This div must be placed
 		immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>
@@ -848,10 +865,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 	<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<!-- ChartJS -->
 	<script src="../../bower_components/chart.js/Chart.js"></script>
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="../../dist/js/pages/dashboard2.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../dist/js/demo.js"></script>
-	<script src="../../dist/js/buscar_produto.js"></script>
+	<script src="../../dist/js/busca.js"></script>
 </body>
 </html>

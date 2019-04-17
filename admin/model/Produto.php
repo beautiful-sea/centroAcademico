@@ -127,11 +127,11 @@ class Produto extends Model{
 		}
 	}
 
-	public function buscarTodos(){
+	public function buscarTodos($opcoes = "ORDER BY nome LIMIT 0,6"){
 
 		try{
 			$sql = new Sql;
-			return $sql->select("SELECT * FROM produtos ORDER BY nome ");
+			return $sql->select("SELECT * FROM produtos $opcoes");
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
 			print($e->getMessage());

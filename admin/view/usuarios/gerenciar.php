@@ -513,7 +513,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">Buscar usuários</h3>
-							<button class=" btn btn-default btn-raised todos_usuarios" id="todos_usuarios">Todos</button>
+							<button class=" btn btn-default btn-raised todos_resultados" id="todos_usuarios">Todos</button>
 							<div class="box-tools">
 								<form role="form" action="#" method="POST" id="form_buscar_usuario">
 									<div class="input-group input-group-sm" style="width: 150px;">
@@ -529,278 +529,279 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<!-- /.box-header -->
 						<div class="box-body table-responsive no-padding">
 							<table class="table table-hover">
+								<input type="hidden" id="tipo_consulta" value="usuario">
 								<input type="hidden" name="paginacao_ativa" value="1" id="paginacao_ativa">
-									<div class="col-sm-7 mostra_resultado" id="div_paginacao">
-										<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
-											<ul class="pagination">
-												<?php 
-												$qntd_paginas = ceil($qntd_usuarios / 4);
+								<div class="col-sm-7 mostra_resultado" id="div_paginacao">
+									<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
+										<ul class="pagination">
+											<?php 
+											$qntd_paginas = ceil($qntd_usuarios / 4);
 
-												for ($i=1; $i <= $qntd_paginas; $i++) { 
-													echo '
-													<li class="paginate_button">
-													<a href="javascript:void(0)" id="pagina'.$i.'" onclick="paginacao('.$i.')" tabindex="'.$i.'">'.$i.'
-													</a>
-													</li>';
-												}
-												?>
-												
-											</div>
+											for ($i=1; $i <= $qntd_paginas; $i++) { 
+												echo '
+												<li class="paginate_button">
+												<a href="javascript:void(0)" id="pagina'.$i.'" onclick="paginacao('.$i.')" tabindex="'.$i.'">'.$i.'
+												</a>
+												</li>';
+											}
+											?>
+
 										</div>
-								<tbody id="resultado_consulta" class="mostra_resultado">
+									</div>
+									<tbody id="resultado_consulta" class="mostra_resultado">
 
-								</tbody></table>
-							</div>
-							<!-- /.box-body -->
-						</div>
-						<!-- /.box -->
-					</div>
-					<div class="col-md-6 ">
-						<!-- general form elements -->
-						<div class="box box-primary">
-							<div class="box-header with-border">
-								<h3 class="box-title">Cadastro de Usuários</h3>
-							</div>
-							<!-- /.box-header -->
-							<!-- form start -->
-							<form role="form" action="../../controller/usuarios/cadastrar.php" method="POST">
-								<div class="box-body">
-									<div class="form-group">
-										<label for="cadastro_email">Email</label>
-										<input type="email" name="email" class="form-control" id="cadastro_email" placeholder="Digitar Email">
-									</div>
-									<div class="form-group">
-										<label for="cadastro_nome">Nome</label>
-										<input type="text" name="nome" class="form-control" id="cadastro_nome" placeholder="Digite o Nome">
-									</div>
-									<div class="form-group">
-										<label for="cadastro_senha">Senha</label>
-										<input type="password" name="senha" class="form-control" id="cadastro_senha" placeholder="Digitar senha">
-									</div>
-									<div class="form-group">
-										<label for="cadastro_senha2">Confirmar Senha</label>
-										<input type="password" name="senha2" class="form-control" id="cadastro_senha2" placeholder="Digitar senha novamente">
-									</div>
+									</tbody></table>
 								</div>
 								<!-- /.box-body -->
-
-								<div class="box-footer">
-
-									<div <?php if($alert != '' && isset($_GET['r'])) echo "class='$alert'"; ?>>
-										<p><?php if($mensagem != '' && isset($_GET['r'])) echo $mensagem;?></p>
-									</div>
-									<button type="submit" class="btn btn-primary">Cadastrar</button>
-								</div>
-							</form>
+							</div>
+							<!-- /.box -->
 						</div>
-						<!-- /.box -->
+						<div class="col-md-6 ">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<h3 class="box-title">Cadastro de Usuários</h3>
+								</div>
+								<!-- /.box-header -->
+								<!-- form start -->
+								<form role="form" action="../../controller/usuarios/cadastrar.php" method="POST">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="cadastro_email">Email</label>
+											<input type="email" name="email" class="form-control" id="cadastro_email" placeholder="Digitar Email">
+										</div>
+										<div class="form-group">
+											<label for="cadastro_nome">Nome</label>
+											<input type="text" name="nome" class="form-control" id="cadastro_nome" placeholder="Digite o Nome">
+										</div>
+										<div class="form-group">
+											<label for="cadastro_senha">Senha</label>
+											<input type="password" name="senha" class="form-control" id="cadastro_senha" placeholder="Digitar senha">
+										</div>
+										<div class="form-group">
+											<label for="cadastro_senha2">Confirmar Senha</label>
+											<input type="password" name="senha2" class="form-control" id="cadastro_senha2" placeholder="Digitar senha novamente">
+										</div>
+									</div>
+									<!-- /.box-body -->
+
+									<div class="box-footer">
+
+										<div <?php if($alert != '' && isset($_GET['r'])) echo "class='$alert'"; ?>>
+											<p><?php if($mensagem != '' && isset($_GET['r'])) echo $mensagem;?></p>
+										</div>
+										<button type="submit" class="btn btn-primary">Cadastrar</button>
+									</div>
+								</form>
+							</div>
+							<!-- /.box -->
+						</div>
 					</div>
+
+				</div><!-- /.row -->
+
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Versão</b> 1.0.0
+			</div>
+			<strong>Copyright &copy; 2019 <a href="https://adminlte.io">xxx</a>.</strong> Todos direitos reservados.
+		</footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Home tab content -->
+				<div class="tab-pane" id="control-sidebar-home-tab">
+					<h3 class="control-sidebar-heading">Recent Activity</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+									<p>Will be 23 on April 24th</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-user bg-yellow"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+									<p>New phone +1(800)555-1234</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+									<p>nora@example.com</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+									<p>Execution time 5 seconds</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
+
+					<h3 class="control-sidebar-heading">Tasks Progress</h3>
+					<ul class="control-sidebar-menu">
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Custom Template Design
+									<span class="label label-danger pull-right">70%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Update Resume
+									<span class="label label-success pull-right">95%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-success" style="width: 95%"></div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Laravel Integration
+									<span class="label label-warning pull-right">50%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h4 class="control-sidebar-subheading">
+									Back End Framework
+									<span class="label label-primary pull-right">68%</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
+
 				</div>
+				<!-- /.tab-pane -->
 
-			</div><!-- /.row -->
+				<!-- Settings tab content -->
+				<div class="tab-pane" id="control-sidebar-settings-tab">
+					<form method="post">
+						<h3 class="control-sidebar-heading">General Settings</h3>
 
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Report panel usage
+								<input type="checkbox" class="pull-right" checked>
+							</label>
 
-		</section>
-		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
+							<p>
+								Some information about this general settings option
+							</p>
+						</div>
+						<!-- /.form-group -->
 
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Allow mail redirect
+								<input type="checkbox" class="pull-right" checked>
+							</label>
 
-	<footer class="main-footer">
-		<div class="pull-right hidden-xs">
-			<b>Versão</b> 1.0.0
-		</div>
-		<strong>Copyright &copy; 2019 <a href="https://adminlte.io">xxx</a>.</strong> Todos direitos reservados.
-	</footer>
+							<p>
+								Other sets of options are available
+							</p>
+						</div>
+						<!-- /.form-group -->
 
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Create the tabs -->
-		<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-			<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-			<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-		</ul>
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<!-- Home tab content -->
-			<div class="tab-pane" id="control-sidebar-home-tab">
-				<h3 class="control-sidebar-heading">Recent Activity</h3>
-				<ul class="control-sidebar-menu">
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-birthday-cake bg-red"></i>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Expose author name in posts
+								<input type="checkbox" class="pull-right" checked>
+							</label>
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+							<p>
+								Allow the user to show his name in blog posts
+							</p>
+						</div>
+						<!-- /.form-group -->
 
-								<p>Will be 23 on April 24th</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-user bg-yellow"></i>
+						<h3 class="control-sidebar-heading">Chat Settings</h3>
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Show me as online
+								<input type="checkbox" class="pull-right" checked>
+							</label>
+						</div>
+						<!-- /.form-group -->
 
-								<p>New phone +1(800)555-1234</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Turn off notifications
+								<input type="checkbox" class="pull-right">
+							</label>
+						</div>
+						<!-- /.form-group -->
 
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-								<p>nora@example.com</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-							<div class="menu-info">
-								<h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-								<p>Execution time 5 seconds</p>
-							</div>
-						</a>
-					</li>
-				</ul>
-				<!-- /.control-sidebar-menu -->
-
-				<h3 class="control-sidebar-heading">Tasks Progress</h3>
-				<ul class="control-sidebar-menu">
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Custom Template Design
-								<span class="label label-danger pull-right">70%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Update Resume
-								<span class="label label-success pull-right">95%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-success" style="width: 95%"></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Laravel Integration
-								<span class="label label-warning pull-right">50%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)">
-							<h4 class="control-sidebar-subheading">
-								Back End Framework
-								<span class="label label-primary pull-right">68%</span>
-							</h4>
-
-							<div class="progress progress-xxs">
-								<div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-							</div>
-						</a>
-					</li>
-				</ul>
-				<!-- /.control-sidebar-menu -->
-
+						<div class="form-group">
+							<label class="control-sidebar-subheading">
+								Delete chat history
+								<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+							</label>
+						</div>
+						<!-- /.form-group -->
+					</form>
+				</div>
+				<!-- /.tab-pane -->
 			</div>
-			<!-- /.tab-pane -->
-
-			<!-- Settings tab content -->
-			<div class="tab-pane" id="control-sidebar-settings-tab">
-				<form method="post">
-					<h3 class="control-sidebar-heading">General Settings</h3>
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Report panel usage
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-
-						<p>
-							Some information about this general settings option
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Allow mail redirect
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-
-						<p>
-							Other sets of options are available
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Expose author name in posts
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-
-						<p>
-							Allow the user to show his name in blog posts
-						</p>
-					</div>
-					<!-- /.form-group -->
-
-					<h3 class="control-sidebar-heading">Chat Settings</h3>
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Show me as online
-							<input type="checkbox" class="pull-right" checked>
-						</label>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Turn off notifications
-							<input type="checkbox" class="pull-right">
-						</label>
-					</div>
-					<!-- /.form-group -->
-
-					<div class="form-group">
-						<label class="control-sidebar-subheading">
-							Delete chat history
-							<a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-						</label>
-					</div>
-					<!-- /.form-group -->
-				</form>
-			</div>
-			<!-- /.tab-pane -->
-		</div>
-	</aside>
-	<!-- /.control-sidebar -->
+		</aside>
+		<!-- /.control-sidebar -->
 	<!-- Add the sidebar's background. This div must be placed
 		immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>
@@ -824,7 +825,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 	<script src="../../bower_components/chart.js/Chart.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../dist/js/demo.js"></script>
-	<script src="../../dist/js/buscar_usuario.js"></script>
+	<script src="../../dist/js/busca.js"></script>
 	
 </body>
 </html>

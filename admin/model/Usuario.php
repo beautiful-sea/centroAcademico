@@ -28,10 +28,11 @@ class Usuario extends Model{
 
 			$sql = new Sql;
 
-			return $sql->select(
+			$usuario = $sql->select(
 				"SELECT * FROM usuarios WHERE email = :email AND senha = :senha AND admin = 1",[
 				":email"	=>	$this->getEmail(),
 				":senha"	=>	$this->getSenha()]);
+			return $usuario[0];
 
 		}catch(Exception $e){
 			print "Erro ao acessar Banco de Dados<br>";
@@ -144,8 +145,9 @@ class Usuario extends Model{
 
 			$sql = new Sql;
 
-			return $sql->select("SELECT * FROM usuarios where id = :id",[
+			$consulta = $sql->select("SELECT * FROM usuarios where id = :id",[
 				":id"	=>	$this->getId()]);
+			return $consulta[0];
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
