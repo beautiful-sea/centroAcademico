@@ -9,9 +9,7 @@ class UltimasFotos extends Model{
 
 
 	public function cadastrar(){
-
-		$sql = "INSERT INTO fotos_atletica (titulo,descricao,foto,data_evento) VALUES(
-		:titulo,:descricao,:foto,:data_evento)";
+		$sql = new Sql;
 
 		$stmt = Conexao::getInstancia()->prepare($sql);
 
@@ -19,14 +17,13 @@ class UltimasFotos extends Model{
 
 		
 		if($foto === true){
-			$stmt->bindValue(":titulo",$this->getTitulo());
-			$stmt->bindValue(":descricao",$this->getDescricao());
-			$stmt->bindValue(":data_evento",$this->getData_evento());
-			$stmt->bindValue(":foto",$this->getFoto());
-
-			return $stmt->execute();	
+			return $sql->query("INSERT INTO fotos_atletica (titulo,descricao,foto,data_evento) VALUES(
+		:titulo,:descricao,:foto,:data_evento)",[
+			":titulo"		=>	$this->getTitulo(),
+			":descricao"	=>	$this->getDescricao(),
+			":data_evento"	=>	$this->getData_evento(),
+			":foto"			=>	$this->getFoto()]);
 		}else{
-			var_dump($foto);
 			return $foto;
 		}
 	}
@@ -57,28 +54,24 @@ class UltimasFotos extends Model{
 
 	public function alterar($antiga,$nova){
 		try{
-			$sql = "UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id";
-			$stmt = Conexao::getInstancia()->prepare($sql);
 
-			$stmt->bindValue(":titulo",$antiga['titulo']);
-			$stmt->bindValue(":descricao",$antiga['descricao']);
-			$stmt->bindValue(":data_evento",$antiga['data_evento']);
-			$stmt->bindValue(":foto",$antiga['foto']);
-			$stmt->bindValue(":id",$nova['id']);
+			$sql = new Sql;
 
-			$stmt->execute();
+			$sql->query("UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id",[
+				":titulo"		=>	$antiga['titulo'],
+				":descricao"	=>	$antiga['descricao'],
+				":data_evento"	=>	$antiga['data_evento'],
+				":foto"			=>	$antiga['foto'],
+				":id"			=>	$nova['id']]);
 
 			///////////////////////////////////////////
-
-			$sql = "UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id";
-			$stmt = Conexao::getInstancia()->prepare($sql);
-			$stmt->bindValue(":titulo",$nova['titulo']);
-			$stmt->bindValue(":descricao",$nova['descricao']);
-			$stmt->bindValue(":data_evento",$nova['data_evento']);
-			$stmt->bindValue(":foto",$nova['foto']);
-			$stmt->bindValue(":id",$antiga['id']);
-
-			return $stmt->execute();
+			$sql = new Sql;
+			return $sql->query("UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id",[
+				":titulo"		=>	$nova['titulo'],
+				":descricao"	=>	$nova['descricao'],
+				":data_evento"	=>	$nova['data_evento'],
+				":foto"			=>	$nova['foto'],
+				":id"			=>	$antiga['id']]);
 
 		}catch(Exception $e){
 			echo "Erro ao acessar Banco de dados<br>";
@@ -133,42 +126,13 @@ class UltimasFotos extends Model{
 		//'Você não enviou nenhum arquivo!'
 	}
 
-	// public function buscarProduto($termo){
-
-	// 	try{
-
-	// 		$termo = "%".$termo."%";
-	// 		$sql = "SELECT * FROM produtos where nome LIKE :termo ORDER BY nome ";
-
-	// 		$stmt = Conexao::getInstancia()->prepare($sql);
-
-	// 		$stmt->bindValue(":termo",$termo);
-
-	// 		$stmt->execute();
-
-	// 		$consulta = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-	// 		return $consulta;
-
-	// 	}catch(Exception $e){
-	// 		print("Erro ao acessar Banco de Dados<br>");
-	// 		print($e->getMessage());
-	// 	}
-	// }
-
-	public function buscarTodas($opcoes = 'ORDER BY data_evento DESC LIMIT 1,6'){
+	public function buscarTodas($opcoes = 'ORDER BY dt_cadastro DESC LIMIT 1,6'){
 
 		try{
 
-			$sql = "SELECT * FROM fotos_atletica $opcoes";
+			$sql = new Sql;
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			return $consulta;
+			return $sql->select("SELECT * FROM fotos_atletica $opcoes");
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -179,17 +143,12 @@ class UltimasFotos extends Model{
 	public function buscarPorID($id){
 		try{
 
-			$sql = "SELECT * FROM fotos_atletica where id = :id";
+			$sql = new Sql;
 
-			$stmt = Conexao::getInstancia()->prepare($sql);
+			$consulta = $sql->select("SELECT * FROM fotos_atletica where id = :id",[
+				":id"	=>	$id]);
 
-			$stmt->bindValue(":id",$id);
-
-			$stmt->execute();
-
-			$consulta = $stmt->fetch(PDO::FETCH_ASSOC);
-
-			return $consulta;
+			return $consulta[0];
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");
@@ -199,14 +158,11 @@ class UltimasFotos extends Model{
 	public function deletar($id){
 
 		try{
+			$sql = new Sql;
 
-			$sql = "DELETE FROM fotos_atletica WHERE id = :id";
-
-			$stmt = Conexao::getInstancia()->prepare($sql);
-
-			$stmt->bindValue(':id',$id);
-
-			return $stmt->execute();
+			$consulta = $sql->query("DELETE FROM fotos_atletica WHERE id = :id",[
+				":id"	=>	$id]);
+			return $consulta[0];
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");

@@ -9,6 +9,9 @@ class Produto extends Model{
 	private $foto;
 
 
+	public function __construct($dados = Array()){
+		$this->setDados($_POST);
+	}
 
 	public function cadastrar(){
 
@@ -138,8 +141,10 @@ class Produto extends Model{
 	public function buscarPorID($id){
 		try{
 			$sql = new Sql;
-			return $sql->select("SELECT * FROM produtos where id = :id",[
+
+			$resultado = $sql->select("SELECT * FROM produtos where id = :id",[
 				":id"	=>	$id]);
+			return $resultado[0];
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");

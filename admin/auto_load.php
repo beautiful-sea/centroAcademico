@@ -8,6 +8,8 @@ spl_autoload_register(function($nomeClasse){
 		"model/$nomeClasse.php",
 		"model/BD/$nomeClasse.php",
 		"../model/$nomeClasse.php",
+		"../model/BD/$nomeClasse.php",
+		"../admin/model/BD/$nomeClasse.php",
 		"../admin/model/atletica/$nomeClasse.php",
 		"../admin/model/$nomeClasse.php",
 		"../../model/$nomeClasse.php",

@@ -29,7 +29,7 @@ $("#diminuir-imagens").click(function(){
 		busca_imagens(tipo);
 	});
 
-	function busca_imagens(tipo,inicio = 1, quantidade_de_resultados = 4){
+	function busca_imagens(tipo,inicio = 0, quantidade_de_resultados = 4){
 		if(tipo == 'editar'){
 			quantidade_de_resultados = 4;
 		}else{
@@ -91,8 +91,9 @@ $("#diminuir-imagens").click(function(){
 		}else{
 			tabela_de_resultado = '';
 		}
-
+		
 		$.each(dados, function(chave,valor){
+
 						//Formatar Data do Evento
 						data_evento = valor.data_evento.split('-');
 						data_evento = data_evento[2]+'/'+data_evento[1]+'/'+data_evento[0];
