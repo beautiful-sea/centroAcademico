@@ -8,7 +8,7 @@ if(!isset($_SESSION['usuario'])){
 }else{
 	$sessao_usuario = $_SESSION['usuario'];
 	$usuario = new Usuario;
-	$qntd_usuarios = count($usuario->getTodos());
+	$qntd_usuarios = count($usuario->getTodos(''));
 
 	$mensagem = '';//Mensagem de retorno ao enviar formulario de cadastro
 	$alert = ''; //Define a cordo do alert gerado para mensagem
@@ -71,7 +71,7 @@ if(!isset($_SESSION['usuario'])){
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="../../dist/css/AdminLTE.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
 		folder instead of downloading all of them to reduce the load. -->
 		<link rel="stylesheet" href="../../dist/css/skins/skin-bordo.css">
@@ -513,7 +513,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 					<div class="box">
 						<div class="box-header">
 							<h3 class="box-title">Buscar usuários</h3>
-							<button class=" btn btn-default btn-raised" id="todos_usuarios">Todos</button>
+							<button class=" btn btn-default btn-raised todos_usuarios" id="todos_usuarios">Todos</button>
 							<div class="box-tools">
 								<form role="form" action="#" method="POST" id="form_buscar_usuario">
 									<div class="input-group input-group-sm" style="width: 150px;">
@@ -529,7 +529,25 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<!-- /.box-header -->
 						<div class="box-body table-responsive no-padding">
 							<table class="table table-hover">
-								<tbody id="resultado_consulta">
+								<input type="hidden" name="paginacao_ativa" value="1" id="paginacao_ativa">
+									<div class="col-sm-7 mostra_resultado" id="div_paginacao">
+										<div class="dataTables_paginate paging_simple_numbers" id="paginacao">
+											<ul class="pagination">
+												<?php 
+												$qntd_paginas = ceil($qntd_usuarios / 4);
+
+												for ($i=1; $i <= $qntd_paginas; $i++) { 
+													echo '
+													<li class="paginate_button">
+													<a href="javascript:void(0)" id="pagina'.$i.'" onclick="paginacao('.$i.')" tabindex="'.$i.'">'.$i.'
+													</a>
+													</li>';
+												}
+												?>
+												
+											</div>
+										</div>
+								<tbody id="resultado_consulta" class="mostra_resultado">
 
 								</tbody></table>
 							</div>

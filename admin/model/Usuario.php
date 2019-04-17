@@ -41,10 +41,10 @@ class Usuario extends Model{
 
 	}
 
-	public function getTodos(){//Retorna todos usuarios
+	public function getTodos($opcoes = 'ORDER BY nome LIMIT 1,4'){//Retorna todos usuarios
 		try{
 			$sql = new Sql;
-			return $sql->select("SELECT * FROM usuarios");
+			return $sql->select("SELECT * FROM usuarios $opcoes");
 
 		}catch(Exception $e){
 			print("Erro ao acessar Banco de Dados<br>");

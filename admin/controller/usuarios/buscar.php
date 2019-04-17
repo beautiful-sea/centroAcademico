@@ -5,8 +5,8 @@ require_once("../../auto_load.php");
 
 $usuario = new Usuario;
 
-if(isset($_POST['todos']) && $_POST['todos'] == 1){
-	echo json_encode($usuario->getTodos());
+if(isset($_POST['todos'])){
+	echo json_encode($usuario->getTodos($_POST['todos']));
 }else{
 	$consulta = $_POST['consulta'];
 
