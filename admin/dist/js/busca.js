@@ -66,10 +66,8 @@ $("#diminuir-imagens").click(function(){
 			method:'POST',
 			data:{todos:opcoes},
 			success: function(data){
-
 				data = JSON.parse(data);
 				preenche_tabela(data,tipo);
-
 				
 					$(".btn-detalhes").on("click",function(){//Ao clicar no botão de detalhes
 						botao = this;
@@ -91,6 +89,14 @@ $("#diminuir-imagens").click(function(){
 										<dt>'+tipo.table_head[3]+':</dt><dd>'+valor.valor+'</dd>\
 										<dt>'+tipo.table_head[3]+':</dt><dd>'+valor.valor_socios+'</dd>\
 										<dt>'+tipo.table_head[4]+':</dt><dd><img width="100px" src="../../dist/img/loja/produtos/'+valor.foto+'"</dd>');
+									break;
+
+									case 'ultimas_fotos':
+										$("#body-modal-detalhes").html('<dt>'+tipo.table_head[0]+':</dt><dd>'+valor.id+'</dd>\
+										<dt>'+tipo.table_head[1]+':</dt><dd>'+valor.titulo+'</dd>\
+										<dt>'+tipo.table_head[2]+':</dt><dd>'+valor.descricao+'</dd>\
+										<dt>'+tipo.table_head[3]+':</dt><dd>'+valor.data_evento+'</dd>\
+										<dt>'+tipo.table_head[4]+':</dt><dd><img width="100px" src="../../../dist/img/atletica/ultimas_fotos/'+valor.foto+'"</dd>');
 									break;
 								}
 
@@ -128,6 +134,13 @@ $("#diminuir-imagens").click(function(){
 										$("#editar_valor_socios").val(valor.valor_socios);
 										$("#editar_id").val(valor.id);
 										$("#editar_descricao").val(valor.descricao);
+									break;
+
+									case 'ultimas_fotos':
+										$("#editar_titulo").val(valor.titulo);
+										$("#editar_descricao").val(valor.descricao);
+										$("#editar_data").val(valor.data_evento);
+										$("#editar_id").val(valor.id);
 									break;
 								}
 								
@@ -178,9 +191,13 @@ $("#diminuir-imagens").click(function(){
 					'</tr><tr><td>'+valor.id+'</td><td>'+valor.nome+'</td><td>'+valor.valor+'</td><td>'+valor.valor_socios+'</td>';
 				break;
 			}
-			//Formatar Data do Evento
-			data_evento = valor.data_evento.split('-');
-			data_evento = data_evento[2]+'/'+data_evento[1]+'/'+data_evento[0];
+			data_evento = valor.data_evento;
+			if(data_evento != null){
+				//Formatar Data do Evento
+				data_evento = valor.data_evento.split('-');
+				data_evento = data_evento[2]+'/'+data_evento[1]+'/'+data_evento[0];
+			}
+
 
 			if(tipo.tipo == 'ultimas_fotos'){
 				tabela_de_resultado = tabela_de_resultado + 

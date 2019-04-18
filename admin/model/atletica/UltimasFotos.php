@@ -7,7 +7,10 @@ class UltimasFotos extends Model{
 	private $foto;
 	private $data_evento;
 
+	public function __construct($dados = Array()){
 
+		$this->setDados($dados);
+	}
 	public function cadastrar(){
 		$sql = new Sql;
 
@@ -30,26 +33,28 @@ class UltimasFotos extends Model{
 
 	public function editar($id){
 
+		$sql = new Sql;
+
+		var_dump($this->getData_evento());
 		if($this->getFoto()){//Verifica se o usuário enviou alguma foto e salva a imagem
 			$fotoAntiga = $this->buscarPorID($id);
 			if($this->salvarImagem($this->getFoto())){
 				unlink('../../dist/img/atletica/ultimas_fotos/' .$fotoAntiga['foto']);
 			}
-			$foto = $this->getFoto();
-			$sql = "UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id";
-			$stmt = Conexao::getInstancia()->prepare($sql);
-			$stmt->bindValue(":foto",$foto);
+			return $sql->query("UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento, foto = :foto WHERE id = :id",[
+				":titulo"		=>	$this->getTitulo(),
+				":descricao"	=>	$this->getDescricao(),
+				":data_evento"	=>	$this->getData_evento(),
+				":foto"			=>	$this->getFoto(),
+				":id"			-> 	$id]);
 		}else{
-			$sql = "UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento WHERE id = :id";
-			$stmt = Conexao::getInstancia()->prepare($sql);
-		}
 
-		$stmt->bindValue(":titulo",$this->getTitulo());
-		$stmt->bindValue(":descricao",$this->getDescricao());
-		$stmt->bindValue(":data_evento",$this->getData_evento());
-		$stmt->bindValue(":id",$id);
-
-		return $stmt->execute();	
+			return $sql->query("UPDATE fotos_atletica SET titulo = :titulo,descricao = :descricao,data_evento = :data_evento WHERE id = :id",[
+				":titulo"		=>	$this->getTitulo(),
+				":descricao"	=>	$this->getDescricao(),
+				":data_evento"	=>	$this->getData_evento(),
+				":id"			=> 	$id]);
+		}	
 	}
 
 	public function alterar($antiga,$nova){

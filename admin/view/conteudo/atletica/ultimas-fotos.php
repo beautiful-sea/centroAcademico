@@ -97,7 +97,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 						<div class="box-body" >
 							<form role="form" action="../../../controller/atletica/editar_ultimas_fotos.php" method="POST" enctype="multipart/form-data">
 								<div class="box-body">
-									<input type="hidden" name="id" id="id">
+									<input type="hidden" name="id" id="editar_id">
 									<div class="form-group">
 										<label for="editar_titulo">Título</label>
 										<input type="text" name="titulo" class="form-control" id="editar_titulo" maxlength="50" placeholder="Digite o Título">
@@ -110,7 +110,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 									</div>
 									<div class="form-group">
 										<label for="editar_data">Data</label>
-										<input type="date" name="data" class="form-control" id="editar_data" >
+										<input type="date" name="data_evento" class="form-control" id="editar_data" >
 									</div>
 									<div class="form-group">
 										<label for="cadastro_senha">Foto</label>
