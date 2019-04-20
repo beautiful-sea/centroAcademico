@@ -1,45 +1,38 @@
 <?php
 
-class Estoque extends Produto
+class Estoque extends Model
 {
-
 	private $id_produto;
 	private $qtd;
 
+	public function __construct($dados = Array()){
+		$this->setDados($_POST);
+	}
+	
 	public function cadastrar()
 	{
 
 		$sql = new Sql;
 		return $sql->query(
-			"INSERT INTO estoque (id_produto, qtd) VALUES(
+			"INSERT INTO estoque (id_produto, qtde) VALUES(
 				:id_produto,:qtd)",
 			[
-				":id_produto"	=>	$this->getId_produto(),
-				":qtd"			=>	$this->getQtd(),
-			]
-		);
+				":id_produto"	=>	$this->getProduto(),
+				":qtd"			=>	$this->getQtd()
+			]);
 	}
 
 	public function listProdutos(){
-
-		$sql = new Sql;
-		return $sql->select("SELECT * FROM 'produtos'");
-		mDebug($sql);
+		$sql=new Sql;
+		return $sql->select("SELECT * FROM produtos ORDER BY nome");
+		 
 	}
 
 
 	public function editar($id)
 	{
-
+if ($id){
 		$sql = new sql;
-
-		if ($this->getFoto()) { //Verifica se o usuário enviou alguma foto e salva a imagem
-			$fotoAntiga = $this->buscarPorID($id);
-
-			if ($this->salvarImagem($this->getFoto())) { //Se nova imagem for salva, apagar a antiga da pasta
-				unlink('../../dist/img/loja/produtos/' . $fotoAntiga['foto']);
-			}
-
 			return $sql->query(
 				"UPDATE produtos SET nome = :nome,descricao = :descricao,valor = :valor,valor_socios = :valor_socios, foto = :foto WHERE id = :id",
 				[

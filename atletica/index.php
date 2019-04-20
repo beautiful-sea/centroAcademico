@@ -514,18 +514,17 @@ $todas_ultimas_fotos = $ultimas_fotos->buscarTodas();
 						<div class="price-table price-table-danger wow zoomInUp">
 							<header class="price-table-header">
 								<span class="price-table-category">SÓCIO</span>
-								<h3><sup>$</sup>6,70<sub>/mês.</sub></h3>
+								<h3><sup>R$</sup>6,70<sub>/mês.</sub></h3>
 							</header>
 							<div class="price-table-body">
-								<p class="price-table-list">
-									Clube de vantagens em todo Brasil
-									Estabelecimentos parceiros exclusivos
+								<ul class="price-table-list">
+									<li class="fas fa-dollar-sign">Clube de vantagens em todo Brasil</li>
+									<li class="fas fa-store">-Estabelecimentos parceiros exclusivos</li>
 									Descontos em todos os produtos da Atlética
-									Benefícios na compra de produtos
-									Descontos em todas as festas da Atlética
+      								Descontos em todas as festas da Atlética
 									Descontos nos campeonatos esportivos da Atlética
 									Vantagens dentro dos eventos da Atlética
-								</p>
+								</ul>
 								<div class="text-center">
 									<a href="https://www.forsocios.com/engvassouras#main" class="btn btn-danger btn-raised"><i class="glyphicon glyphicon-euro"></i>Eu quero!</a>
 								</div>
