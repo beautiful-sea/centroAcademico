@@ -320,7 +320,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="view/loja/produtos.php"><i class="far fa-circle"></i> Produtos</a></li>
-
+					<li><a href="view/loja/estoque.php"><i class="far fa-circle"></i> Itens no estoque</a></li>
 				</ul>
 			</li>
 			<li class="treeview">

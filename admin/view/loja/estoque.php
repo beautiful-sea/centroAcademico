@@ -8,8 +8,9 @@ if(!isset($_SESSION['usuario'])){
 }else{
 	$sessao_usuario = $_SESSION['usuario'];
 	$estoque = new Estoque;
+	$produto = new Produto;
 	$listProduto = $estoque->listProdutos();
-	// $qntd_produtos = count($produto->buscarTodos());
+	$qntd_produtos = count($produto->buscarTodos());
 
 	$mensagem = '';//Mensagem de retorno ao enviar formulario de cadastro
 	$alert = ''; //Define a cor do do alert gerado para mensagem
@@ -637,7 +638,7 @@ if(!isset($_SESSION['usuario'])){
                                     <div class="form-group">
 
                                         <label for="produto">Produto</label>
-                                        <select class="form-control" name="produto">
+                                        <select class="form-control" name="id_produto">
                                             <?php foreach($listProduto as $item => $produto) : ?>
                                             <option value="<?= $produto['id'] ?>"><?= $produto['nome']?></option>
                                             <?php endforeach; ?>

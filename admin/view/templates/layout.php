@@ -1,4 +1,22 @@
-<div class="wrapper">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#333">
+	<title>Loja Atlética</title>
+	<meta name="description" content="Material Style Theme">
+	<link rel="shortcut icon" href="../../../assets/img/favicon.png?v=3">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="../../../assets/css/preload.min.css">
+	<link rel="stylesheet" href="../../../assets/css/plugins.min.css">
+	<link rel="stylesheet" href="../../../assets/css/style.bordo.min.css">
+	<!--[if lt IE 9]>
+				<script src="../../../assets/js/html5shiv.min.js"></script>
+				<script src="../../../assets/js/respond.min.js"></script>
+			<![endif]-->
+		</head>
+
 
 	<header class="main-header">
 
@@ -46,7 +64,7 @@
 									<li>
 										<a href="#">
 											<div class="pull-left">
-												<img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+												<img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
 											</div>
 											<h4>
 												AdminLTE Design Team
@@ -58,7 +76,7 @@
 									<li>
 										<a href="#">
 											<div class="pull-left">
-												<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+												<img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
 											</div>
 											<h4>
 												Developers
